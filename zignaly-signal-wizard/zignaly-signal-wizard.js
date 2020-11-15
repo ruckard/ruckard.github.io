@@ -397,32 +397,32 @@ function updateTips() {
       addLi(tips, tip1);
   }
   if ((zigSignalType === 'entry') && (zigSide === 'long')) {
-      tip1 = 'entry is the updated named for this signal. Obsolete documentation called it: "buy"';
+      tip1 = '(entry) entry is the updated named for this signal. Obsolete documentation called it: "buy"';
 
       addLi(tips, tip1);
   }
   if ((zigSignalType === 'exit') && (zigSide === 'long')) {
-      tip1 = 'exit is the updated named for this signal. Obsolete documentation called it: "sell"';
+      tip1 = '(exit) exit is the updated named for this signal. Obsolete documentation called it: "sell"';
 
       addLi(tips, tip1);
   }
   if ((zigSignalType === 'entry') && (zigSide === 'long')) {
-      tip1 = 'Entry signal type when being in long mode means: To buy or to enter a long position';
+      tip1 = '(entry) Entry signal type when being in long mode means: To buy or to enter a long position';
 
       addLi(tips, tip1);
   }
   if ((zigSignalType === 'entry') && (zigSide === 'short')) {
-      tip1 = 'Entry signal type when being in short mode means: To sell or to enter a short position';
+      tip1 = '(entry) Entry signal type when being in short mode means: To sell or to enter a short position';
 
       addLi(tips, tip1);
   }
   if ((zigSignalType === 'exit') && (zigSide === 'long')) {
-      tip1 = 'Exit signal type when being in long mode means: To sell or to exit a long position';
+      tip1 = '(exit) Exit signal type when being in long mode means: To sell or to exit a long position';
 
       addLi(tips, tip1);
   }
   if ((zigSignalType === 'exit') && (zigSide === 'short')) {
-      tip1 = 'Exit signal type when being in short mode means: To buy or to exit a short position';
+      tip1 = '(exit) Exit signal type when being in short mode means: To buy or to exit a short position';
 
       addLi(tips, tip1);
   }
