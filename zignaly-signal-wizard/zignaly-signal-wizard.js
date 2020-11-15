@@ -331,12 +331,78 @@ function updateTips() {
   var zigSignalType = document.getElementById("zigSignalType").value;
   if (zigSignalType === 'reEntry') {
       tip1 = 'reEntry signals are only allowed in Signal Providers.';
+      tip2 = 'ReEntry (or DCA) signals identify previously opened positions (with the signalId parameter) and enlarge their positions size. ';
+      tip3 = '(reEntry) The new amount is based on the user configuration. And the option of Accept DCA/ReBuys Signals option needs to be checked by the user in the provider s options.';
+      tip4 = '(reEntry) The new buy order is sent to the exchange and will be a buy limit order; if no price is specified in the signal, the current price will be used as the limit price.';
 
       addLi(tips, tip1);
+      addLi(tips, tip2);
+      addLi(tips, tip3);
+      addLi(tips, tip4);
 
   }
-  if (zigSignalType === 'entry') {
+  if (zigSignalType === 'stop') {
+      tip1 = '(stop) Stop signals will disable your provider from accepting any new entry signal. All other signals are accepted (reEntry, exit...).';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'start') {
+      tip1 = '(start) Start signals will resume accepting signals for a previously stopped provider.';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'disableMarket') {
+      tip1 = '(disableMarket) DisableMarket signals will make your provider not accept any new buy signal for the given market. All other signals are accepted (reBuy, sell). It works like the stop signals, but for a specific market.';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'enableMarket') {
+      tip1 = '(enableMarket) EnableMarket signals will resume accepting signals for a previously disabled provider in the given market.';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'panicSell') {
+      tip1 = '(panicSell) PanicSell signals are used to sell everything at the current market price. You can filter by quote or base if you want to delimit it a little bit.';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'panicSell') && (zigProviderType === 'signalprovider')) {
+      tip1 = '(panicSell) To accept panicSell signals, the user has to have the following option checked in the provider s option: Accept panic sell signals from this provider.';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'update') {
+      tip1 = '(update) Update signals allow you to update open positions.';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'update') && (zigProviderType === 'signalprovider')) {
+      tip1 = '(update) To accept update signals, the user has to have the following option checked in the provider s option: Accept Updates from Signals?.';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'cancelEntry') {
+      tip1 = '(cancelEntry) cancelEntry type will remove an entry signal that has not been filled yet. ';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'cancelEntry') {
+      tip1 = '(cancelEntry) For example, if your entry was using a limit order, it will be removed from the exchange.';
+
+      addLi(tips, tip1);
+  }
+  if (zigSignalType === 'reverse') {
+      tip1 = '(reverse) The signal works as an exit and an entry signal.';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'entry') && (zigSide === 'long')) {
       tip1 = 'entry is the updated named for this signal. Obsolete documentation called it: "buy"';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'exit') && (zigSide === 'long')) {
+      tip1 = 'exit is the updated named for this signal. Obsolete documentation called it: "sell"';
 
       addLi(tips, tip1);
   }
@@ -347,6 +413,16 @@ function updateTips() {
   }
   if ((zigSignalType === 'entry') && (zigSide === 'short')) {
       tip1 = 'Entry signal type when being in short mode means: To sell or to enter a short position';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'exit') && (zigSide === 'long')) {
+      tip1 = 'Exit signal type when being in long mode means: To sell or to exit a long position';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'exit') && (zigSide === 'short')) {
+      tip1 = 'Exit signal type when being in short mode means: To buy or to exit a short position';
 
       addLi(tips, tip1);
   }
