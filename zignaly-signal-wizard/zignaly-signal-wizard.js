@@ -55,12 +55,26 @@ function setSuggestedSignal() {
   } else {
     zigStopLoss = "";
   }
+  // Trailing Stop Percentage
+  var zigEnableTrailingPercentage = document.getElementById("zigEnableTrailingPercentage").checked;
+  if (zigEnableTrailingPercentage) {
+    if (zigSide === 'long') {
+      zigTrailingPercentageTrigger = document.getElementById("zigTrailingPercentageTrigger").value;
+      zigTrailingPercentageDistance = "-" + document.getElementById("zigTrailingPercentageDistance").value;
+    } else {
+      zigTrailingPercentageTrigger = "-" + document.getElementById("zigTrailingPercentageTrigger").value;
+      zigTrailingPercentageDistance = document.getElementById("zigTrailingPercentageDistance").value;
+    }
+  } else {
+    zigTrailingPercentageTrigger = "";
+    zigTrailingPercentageDistance = "";
+  }
 
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPercentageDistance;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPercentageDistance;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPercentageDistance;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPercentageDistance;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPercentageDistance;
 
 }
 
@@ -276,6 +290,7 @@ function zigSignalTypeChange() {
   if (!((zigSignalType === 'entry') || (zigSignalType === 'update'))) {
     document.getElementById("zigEnableTakeProfit").checked = false;
     document.getElementById("zigEnableStopLoss").checked = false;
+    document.getElementById("zigEnableTrailingPercentage").checked = false;
   }
   updateInfo();
 }
@@ -295,6 +310,19 @@ function zigEnableStopLossChange() {
 }
 
 function zigStopLossChange() {
+  updateInfo();
+}
+
+function zigEnableTrailingPercentageChange() {
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
+  updateInfo();
+}
+
+function zigTrailingPercentageTriggerChange() {
+  updateInfo();
+}
+
+function zigTrailingPercentageDistanceChange() {
   updateInfo();
 }
 
@@ -492,6 +520,24 @@ function updateTips() {
   }
   if ((zigEnableStopLoss) && (zigSide === 'short')) {
       tip1 = '(stopLoss) When being in short the mode the stop loss is set without the minus (-) sign.';
+      addLi(tips, tip1);
+  }
+  // Enable Trailing Stop Percentage
+  var zigEnableTrailingPercentage = document.getElementById("zigEnableTrailingPercentage").checked;
+  if ((zigEnableTrailingPercentage) && (zigSide === 'short')) {
+      tip1 = '(trailingStopTriggerPercentage) When being in short mode the trigger is set with a minus (-) sign.';
+
+      addLi(tips, tip1);
+      tip1 = '(trailingStopTriggerDistance) When being in short mode the distance is set without the minus (-) sign.';
+
+      addLi(tips, tip1);
+  }
+  if ((zigEnableTrailingPercentage) && (zigSide === 'long')) {
+      tip1 = '(trailingStopTriggerPercentage) When being in long mode the trigger is set without the minus (-) sign.';
+
+      addLi(tips, tip1);
+      tip1 = '(trailingStopTriggerDistance) When being in long mode the distance is set with a minus (-) sign.';
+
       addLi(tips, tip1);
   }
 }

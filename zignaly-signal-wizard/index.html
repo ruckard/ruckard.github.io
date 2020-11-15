@@ -67,6 +67,22 @@ Signal Type:
   <option value="3.0">- 3%</option>
   <option value="4.0">- 4%</option>
 </select>
+<br>
+<input onchange="zigEnableTrailingPercentageChange()" type="checkbox" id="zigEnableTrailingPercentage">Enable Trailing Stop (based on percentage). Trigger on:
+<select onchange="zigTrailingPercentageTriggerChange()" id="zigTrailingPercentageTrigger">
+  <option value="1.2">+ 1.2%</option>
+  <option value="2.2">+ 2.2%</option>
+  <option value="3.2">+ 3.2%</option>
+  <option value="4.2">+ 4.2%</option>
+</select>
+and then use a
+<select onchange="zigTrailingPercentageDistanceChange()" id="zigTrailingPercentageDistance">
+  <option value="0.6">0.6%</option>
+  <option value="1.6">1.6%</option>
+  <option value="2.6">2.6%</option>
+  <option value="3.6">3.6%</option>
+</select>
+distance.
 <br><br>
 <!--<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">-->
 </form>
