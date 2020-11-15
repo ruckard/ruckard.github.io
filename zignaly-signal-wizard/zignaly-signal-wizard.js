@@ -175,7 +175,7 @@ function zigProviderTypeChange() {
 
       zigSignalType.add(el);
   }
-  // zigSignalTypeChange(); // Force signal type change to be taken into account
+  zigSignalTypeChange(); // Force signal type change to be taken into account
 
 }
 
@@ -291,6 +291,11 @@ function zigSignalTypeChange() {
     document.getElementById("zigEnableTakeProfit").checked = false;
     document.getElementById("zigEnableStopLoss").checked = false;
     document.getElementById("zigEnableTrailingPercentage").checked = false;
+  }
+  var zigProviderType = document.getElementById("zigProviderType").value;
+
+  if (zigProviderType === 'signalprovider') {
+      document.getElementById("zigEnableTrailingPercentage").checked = false;
   }
   updateInfo();
 }
@@ -503,40 +508,40 @@ function updateTips() {
   // Enable Take Profit
   var zigEnableTakeProfit = document.getElementById("zigEnableTakeProfit").checked;
   if ((zigEnableTakeProfit) && (zigSide === 'short')) {
-      tip1 = '(takeProfit) When being in short mode the take profit is set with a minus (-) sign.';
+      tip1 = '(takeProfit) When being in short mode the take profit is set with a minus sign (-).';
 
       addLi(tips, tip1);
   }
   if ((zigEnableTakeProfit) && (zigSide === 'long')) {
-      tip1 = '(takeProfit) When being in long mode the take profit is set without the minus (-) sign.';
+      tip1 = '(takeProfit) When being in long mode the take profit is set without the minus sign ( ).';
 
       addLi(tips, tip1);
   }
   // Enable Stop Loss
   var zigEnableStopLoss = document.getElementById("zigEnableStopLoss").checked;
   if ((zigEnableStopLoss) && (zigSide === 'long')) {
-      tip1 = '(stopLoss) When being in long mode the stop loss is set with a minus (-) sign.';
+      tip1 = '(stopLoss) When being in long mode the stop loss is set with a minus sign (-).';
       addLi(tips, tip1);
   }
   if ((zigEnableStopLoss) && (zigSide === 'short')) {
-      tip1 = '(stopLoss) When being in short the mode the stop loss is set without the minus (-) sign.';
+      tip1 = '(stopLoss) When being in short the mode the stop loss is set without the minus sign ( ).';
       addLi(tips, tip1);
   }
   // Enable Trailing Stop Percentage
   var zigEnableTrailingPercentage = document.getElementById("zigEnableTrailingPercentage").checked;
   if ((zigEnableTrailingPercentage) && (zigSide === 'short')) {
-      tip1 = '(trailingStopTriggerPercentage) When being in short mode the trigger is set with a minus (-) sign.';
+      tip1 = '(trailingStopTriggerPercentage) When being in short mode the trigger is set with a minus sign (-).';
 
       addLi(tips, tip1);
-      tip1 = '(trailingStopTriggerDistance) When being in short mode the distance is set without the minus (-) sign.';
+      tip1 = '(trailingStopTriggerDistance) When being in short mode the distance is set without the minus sign ( ).';
 
       addLi(tips, tip1);
   }
   if ((zigEnableTrailingPercentage) && (zigSide === 'long')) {
-      tip1 = '(trailingStopTriggerPercentage) When being in long mode the trigger is set without the minus (-) sign.';
+      tip1 = '(trailingStopTriggerPercentage) When being in long mode the trigger is set without the minus sign ( ).';
 
       addLi(tips, tip1);
-      tip1 = '(trailingStopTriggerDistance) When being in long mode the distance is set with a minus (-) sign.';
+      tip1 = '(trailingStopTriggerDistance) When being in long mode the distance is set with a minus sign (-).';
 
       addLi(tips, tip1);
   }
