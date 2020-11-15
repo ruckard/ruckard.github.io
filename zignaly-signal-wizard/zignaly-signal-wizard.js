@@ -30,6 +30,7 @@ function setSuggestedSignal() {
   }
   
   suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigExchange + zigSide;
+  updateTips();
 }
 
 function zigProviderTypeChange() {
@@ -127,6 +128,48 @@ function zigExchangeTypeChange() {
       }
 
       zigSide.add(el);
+  }
+
+}
+
+function addLi(ulField, text) {
+  var node = document.createElement("LI");
+  var textNode = document.createTextNode(text);
+  node.appendChild(textNode);
+  ulField.appendChild(node);
+}
+
+function updateTips() {
+  // TODO: the reEntry works for futures too, but it doesn't work for copy-trading
+
+  tips = document.getElementById("tips");
+  tips.innerHTML="";
+
+
+  var zigProviderType = document.getElementById("zigProviderType").value;
+
+
+  // Profit Sharing Provider
+  if (zigProviderType === 'profitsharing') {
+      tip1 = 'Profit Sharing providers can only use Zignaly Exchanges.'
+      tip2 = 'As of November 2020 Profit Sharing providers can only operate in futures.'
+      tip3 = 'Zignaly Exchange is under the hood a binance account. If the final users want to divide their allocated money into different providers it is easier to do so when using Profit Sharing providers because one provider can go long and another provider can go short and there is not a problem in futures as it would happened with a Copy Trader provider.';
+
+      addLi(tips, tip1);
+      addLi(tips, tip2);
+      addLi(tips, tip3);
+
+  }
+  if (zigProviderType === 'copytrader') {
+      tip1 = 'Copy Trader providers can only use percentages when submiting their signals. That is why you cannot send an specific quote.'
+
+      addLi(tips, tip1);
+  }
+  if (zigProviderType === 'signalprovider') {
+      tip1 = 'Signal providers can only use quotes when submiting their signals. That is why you cannot send an specific percentage.'
+
+      addLi(tips, tip1);
+
   }
 
 }
