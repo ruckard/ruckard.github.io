@@ -26,54 +26,25 @@ function setSuggestedSignal() {
 
   // Side
   var zigSide = document.getElementById("zigSide").value;
-  // Overwrite logic
-  if (zigProviderType === 'profitsharing') {
-      zigExchangeType = "futures";
-  }
   
-  suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigExchange + zigSide;
+  suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigSide;
 }
 
 function zigProviderTypeChange() {
   var zigProviderType = document.getElementById("zigProviderType").value;
-
-  var profitSharingExchangeTypes = ["futures"];
-  var copyTraderExchangeTypes = ["spot", "futures"]; 
-  var signalProviderExchangeTypes = ["spot", "futures"]; 
 
   var profitSharingExchanges = ["zignaly"];
   var copyTraderExchanges = ["binance", "kucoin", "zignaly"]; 
   var signalProviderExchanges = ["binance", "kucoin", "zignaly"]; 
 
   if (zigProviderType === 'profitsharing') {
-      usedExchangeTypes = profitSharingExchangeTypes;
       usedExchanges = profitSharingExchanges;
   }
   if (zigProviderType === 'copytrader') {
-      usedExchangeTypes = copyTraderExchangeTypes;
       usedExchanges = copyTraderExchanges;
   }
   if (zigProviderType === 'signalprovider') {
-      usedExchangeTypes = signalProviderExchangeTypes;
       usedExchanges = signalProviderExchanges;
-  }
-
-  var zigExchangeType = document.getElementById("zigExchangeType"); 
-  zigExchangeType.innerHTML = "";
-
-  for(var i = 0; i < usedExchangeTypes.length; i++) {
-      var opt = usedExchangeTypes[i];
-
-      var el = document.createElement("option");
-      el.value = opt;
-      if (el.value === "futures") {
-          el.text = "Futures";
-      }
-      if (el.value === "spot") {
-          el.text = "Spot";
-      }
-
-      zigExchangeType.add(el);
   }
 
   var zigExchange = document.getElementById("zigExchange"); 
@@ -96,7 +67,7 @@ function zigProviderTypeChange() {
 
       zigExchange.add(el);
   }
-  zigExchangeTypeChange(); // Force exchange type change to be taken into account
+  zigExchangeChange(); // Force exchange type change to be taken into account
 
 }
 
@@ -135,7 +106,43 @@ function zigExchangeTypeChange() {
 }
 
 function zigExchangeChange() {
-  updateInfo();
+
+  var zigExchange = document.getElementById("zigExchange").value;
+
+  var zignalyExchangeTypes = ["futures"];
+  var binanceExchangeTypes = ["spot", "futures"];
+  var kucoinExchangeTypes = ["spot", "futures"];
+
+  if (zigExchange === 'zignaly') {
+      usedExchangeTypes = zignalyExchangeTypes;
+  }
+  if (zigExchange === 'binance') {
+      usedExchangeTypes = binanceExchangeTypes;
+  }
+  if (zigExchange === 'kucoin') {
+      usedExchangeTypes = kucoinExchangeTypes;
+  }
+
+  var zigExchangeType = document.getElementById("zigExchangeType");
+  zigExchangeType.innerHTML = "";
+
+  for(var i = 0; i < usedExchangeTypes.length; i++) {
+      var opt = usedExchangeTypes[i];
+
+      var el = document.createElement("option");
+      el.value = opt;
+      if (el.value === "futures") {
+          el.text = "Futures";
+      }
+      if (el.value === "spot") {
+          el.text = "Spot";
+      }
+
+      zigExchangeType.add(el);
+  }
+
+  zigExchangeTypeChange(); // Force exchange type change to be taken into account
+
 }
 
 function zigSideChange() {
