@@ -183,7 +183,7 @@ function updateTips() {
   var zigExchange = document.getElementById("zigExchange").value;
 
 
-  // Profit Sharing Provider
+  // Exchange
   if (zigExchange === 'zignaly') {
       tip1 = 'Zignaly Exchange is under the hood a binance account. If the final users want to divide their allocated money into different providers it is easier to do so when using Profit Sharing providers because one provider can go long and another provider can go short and there is not a problem in futures as it would happened with a Copy Trader provider.';
 
@@ -200,6 +200,23 @@ function updateTips() {
 //
 //       addLi(tips, tip1);
 //   }
+
+  var zigSide = document.getElementById("zigSide").value;
+
+
+  // Side
+  if (zigSide === 'long') {
+      tip1 = 'Long side can be used in both spot and futures exchanges.';
+
+      addLi(tips, tip1);
+
+  }
+  if (zigSide === 'short') {
+      tip1 = 'Short side can only be used in futures exchanges.';
+
+      addLi(tips, tip1);
+
+  }
 
 }
 
