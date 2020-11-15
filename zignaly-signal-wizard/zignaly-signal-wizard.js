@@ -32,12 +32,24 @@ function setSuggestedSignal() {
 
   // SignalType
   var zigSignalType = document.getElementById("zigSignalType").value;
-  
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
+
+  // TakeProfit
+  var zigEnableTakeProfit = document.getElementById("zigEnableTakeProfit").checked;
+  if (zigEnableTakeProfit) {
+    if (zigSide === 'long') {
+      zigTakeProfit = document.getElementById("zigTakeProfit").value;
+    } else {
+      zigTakeProfit = "-" + document.getElementById("zigTakeProfit").value;
+    }
+  } else {
+    zigTakeProfit = "";
+  }
+
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
 
 }
 
@@ -249,6 +261,19 @@ function zigLeverageChange() {
 }
 
 function zigSignalTypeChange() {
+  var zigSignalType = document.getElementById("zigSignalType").value;
+  if (!((zigSignalType === 'entry') || (zigSignalType === 'update'))) {
+    document.getElementById("zigEnableTakeProfit").checked = false;
+  }
+  updateInfo();
+}
+
+function zigEnableTakeProfitChange() {
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
+  updateInfo();
+}
+
+function zigTakeProfitChange() {
   updateInfo();
 }
 
@@ -423,6 +448,13 @@ function updateTips() {
   }
   if ((zigSignalType === 'exit') && (zigSide === 'short')) {
       tip1 = '(exit) Exit signal type when being in short mode means: To buy or to exit a short position';
+
+      addLi(tips, tip1);
+  }
+  // Enable Take Profit
+  var zigEnableTakeProfit = document.getElementById("zigEnableTakeProfit").checked;
+  if ((zigEnableTakeProfit) && (zigSide === 'short')) {
+      tip1 = '(takeProfit) When being in short the mode take profit is set with a minus (-) sign.';
 
       addLi(tips, tip1);
   }
