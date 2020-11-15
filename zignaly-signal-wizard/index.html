@@ -17,7 +17,7 @@ Provider type:
 </select>
 <br>
 Exchange:
-<select id="zigExchange">
+<select onchange="zigExchangeChange()" id="zigExchange">
   <option value="zignaly">Zignaly Exchange</option>
 </select>
 <br>
@@ -27,13 +27,14 @@ Exchange Type:
 </select>
 <br>
 Side:
-<select id="zigSide">
+<select onchange="zigSideChange()" id="zigSide">
   <option value="long">Long</option>
   <option value="short">Short</option>
 </select>
 <br><br>
-<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">
+<!--<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">-->
 </form>
+<h2>Suggested signal</h2>
 <p id="suggestedSignal">Suggested signal will be shown here</p>
 <br><br>
 <h2>Extra useful information</h2>

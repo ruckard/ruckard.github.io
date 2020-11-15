@@ -2,6 +2,8 @@
 let suggestedSignal = document.getElementById('suggestedSignal');
 let signalButton = document.getElementById('signalWizardButton');
 
+updateInfo();
+
 function setSuggestedSignal() {
   // Define variables
   var zigExchangeType="";
@@ -30,7 +32,6 @@ function setSuggestedSignal() {
   }
   
   suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigExchange + zigSide;
-  updateTips();
 }
 
 function zigProviderTypeChange() {
@@ -129,7 +130,16 @@ function zigExchangeTypeChange() {
 
       zigSide.add(el);
   }
+  updateInfo();
 
+}
+
+function zigExchangeChange() {
+  updateInfo();
+}
+
+function zigSideChange() {
+  updateInfo();
 }
 
 function addLi(ulField, text) {
@@ -153,11 +163,9 @@ function updateTips() {
   if (zigProviderType === 'profitsharing') {
       tip1 = 'Profit Sharing providers can only use Zignaly Exchanges.'
       tip2 = 'As of November 2020 Profit Sharing providers can only operate in futures.'
-      tip3 = 'Zignaly Exchange is under the hood a binance account. If the final users want to divide their allocated money into different providers it is easier to do so when using Profit Sharing providers because one provider can go long and another provider can go short and there is not a problem in futures as it would happened with a Copy Trader provider.';
 
       addLi(tips, tip1);
       addLi(tips, tip2);
-      addLi(tips, tip3);
 
   }
   if (zigProviderType === 'copytrader') {
@@ -172,4 +180,30 @@ function updateTips() {
 
   }
 
+  var zigExchange = document.getElementById("zigExchange").value;
+
+
+  // Profit Sharing Provider
+  if (zigExchange === 'zignaly') {
+      tip1 = 'Zignaly Exchange is under the hood a binance account. If the final users want to divide their allocated money into different providers it is easier to do so when using Profit Sharing providers because one provider can go long and another provider can go short and there is not a problem in futures as it would happened with a Copy Trader provider.';
+
+      addLi(tips, tip1);
+
+  }
+//   if (zigExchange === 'binance') {
+//       tip1 = ''
+//
+//       addLi(tips, tip1);
+//   }
+//   if (zigExchange === 'kucoin') {
+//       tip1 = ''
+//
+//       addLi(tips, tip1);
+//   }
+
+}
+
+function updateInfo() {
+  setSuggestedSignal();
+  updateTips();
 }
