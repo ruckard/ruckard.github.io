@@ -22,8 +22,14 @@ Exchange:
 </select>
 <br>
 Exchange Type:
-<select id="zigExchangeType">
+<select onchange="zigExchangeTypeChange()" id="zigExchangeType">
   <option value="futures">Futures</option>
+</select>
+<br>
+Side:
+<select id="zigSide">
+  <option value="long">Long</option>
+  <option value="short">Short</option>
 </select>
 <br><br>
 <input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">

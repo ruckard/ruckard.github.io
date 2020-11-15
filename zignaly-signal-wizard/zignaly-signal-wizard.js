@@ -22,12 +22,14 @@ function setSuggestedSignal() {
   // Exchange type
   var zigExchangeType = document.getElementById("zigExchangeType").value;
 
+  // Side
+  var zigSide = document.getElementById("zigSide").value;
   // Overwrite logic
   if (zigProviderType === 'profitsharing') {
       zigExchangeType = "futures";
   }
   
-  suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigExchange;
+  suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigExchange + zigSide;
 }
 
 function zigProviderTypeChange() {
@@ -92,6 +94,39 @@ function zigProviderTypeChange() {
 
       zigExchange.add(el);
   }
+  zigExchangeTypeChange(); // Force exchange type change to be taken into account
 
 }
 
+function zigExchangeTypeChange() {
+  var zigExchangeType = document.getElementById("zigExchangeType").value;
+
+  var spotExchangeTypeSides = ["long"];
+  var futuresExchangeTypeSides = ["long", "short"];
+
+  if (zigExchangeType === 'spot') {
+      usedExchangeTypeSides = spotExchangeTypeSides;
+  }
+  if (zigExchangeType === 'futures') {
+      usedExchangeTypeSides = futuresExchangeTypeSides;
+  }
+
+  var zigSide = document.getElementById("zigSide");
+  zigSide.innerHTML = "";
+
+  for(var i = 0; i < usedExchangeTypeSides.length; i++) {
+      var opt = usedExchangeTypeSides[i];
+
+      var el = document.createElement("option");
+      el.value = opt;
+      if (el.value === "long") {
+          el.text = "Long";
+      }
+      if (el.value === "short") {
+          el.text = "Short";
+      }
+
+      zigSide.add(el);
+  }
+
+}
