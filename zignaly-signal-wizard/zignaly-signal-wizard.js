@@ -29,12 +29,15 @@ function setSuggestedSignal() {
 
   // Leverage
   var zigLeverage = document.getElementById("zigLeverage").value;
+
+  // SignalType
+  var zigSignalType = document.getElementById("zigSignalType").value;
   
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType;
 
 }
 
@@ -76,6 +79,66 @@ function zigProviderTypeChange() {
       zigExchange.add(el);
   }
   zigExchangeChange(); // Force exchange type change to be taken into account
+
+  var profitSharingSignalTypes = ["entry","exit","stop","start","disableMarket","enableMarket","panicSell", "update", "cancelEntry","reverse"];
+  var copyTraderSignalTypes = ["entry","exit","stop","start","disableMarket","enableMarket","panicSell", "update","cancelEntry","reverse"];
+  var signalProviderSignalTypes = ["entry","exit","reEntry","stop","start","disableMarket","enableMarket","panicSell", "update","cancelEntry","reverse"];
+
+  if (zigProviderType === 'profitsharing') {
+      usedSignalTypes = profitSharingSignalTypes;
+  }
+  if (zigProviderType === 'copytrader') {
+      usedSignalTypes = copyTraderSignalTypes;
+  }
+  if (zigProviderType === 'signalprovider') {
+      usedSignalTypes = signalProviderSignalTypes;
+  }
+
+  var zigSignalType = document.getElementById("zigSignalType");
+  zigSignalType.innerHTML = "";
+
+  for(var i = 0; i < usedSignalTypes.length; i++) {
+      var opt = usedSignalTypes[i];
+
+      var el = document.createElement("option");
+      el.value = opt;
+      if (el.value === "entry") {
+          el.text = "Entry";
+      }
+      if (el.value === "exit") {
+          el.text = "Exit";
+      }
+      if (el.value === "reEntry") {
+          el.text = "Re entry";
+      }
+      if (el.value === "start") {
+          el.text = "Start";
+      }
+      if (el.value === "stop") {
+          el.text = "Stop";
+      }
+      if (el.value === "disableMarket") {
+          el.text = "Disable Market";
+      }
+      if (el.value === "enableMarket") {
+          el.text = "Enable Market";
+      }
+      if (el.value === "panicSell") {
+          el.text = "Panic Sell";
+      }
+      if (el.value === "update") {
+          el.text = "Update";
+      }
+      if (el.value === "cancelEntry") {
+          el.text = "Cancel entry";
+      }
+      if (el.value === "reverse") {
+          el.text = "Reverse entry";
+      }
+
+      zigSignalType.add(el);
+  }
+  // zigSignalTypeChange(); // Force signal type change to be taken into account
 
 }
 
@@ -185,6 +248,10 @@ function zigLeverageChange() {
   updateInfo();
 }
 
+function zigSignalTypeChange() {
+  updateInfo();
+}
+
 function addLi(ulField, text) {
   var node = document.createElement("LI");
   var textNode = document.createTextNode(text);
@@ -260,7 +327,29 @@ function updateTips() {
       addLi(tips, tip1);
 
   }
+  // Signal type
+  var zigSignalType = document.getElementById("zigSignalType").value;
+  if (zigSignalType === 'reEntry') {
+      tip1 = 'reEntry signals are only allowed in Signal Providers.';
 
+      addLi(tips, tip1);
+
+  }
+  if (zigSignalType === 'entry') {
+      tip1 = 'entry is the updated named for this signal. Obsolete documentation called it: "buy"';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'entry') && (zigSide === 'long')) {
+      tip1 = 'Entry signal type when being in long mode means: To buy or to enter a long position';
+
+      addLi(tips, tip1);
+  }
+  if ((zigSignalType === 'entry') && (zigSide === 'short')) {
+      tip1 = 'Entry signal type when being in short mode means: To sell or to enter a short position';
+
+      addLi(tips, tip1);
+  }
 }
 
 function updateInfo() {

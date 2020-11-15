@@ -36,6 +36,21 @@ Side:
   <option value="long">Long</option>
   <option value="short">Short</option>
 </select>
+<br>
+Signal Type:
+<select onchange="zigSignalTypeChange()" id="zigSignalType">
+  <option value="entry">Entry</option>
+  <option value="exit">Exit</option>
+  <option value="reEntry">Re Entry</option>
+  <option value="stop">Stop</option>
+  <option value="start">Stop</option>
+  <option value="disableMarket">Disable Market</option>
+  <option value="enableMarket">Enable Market</option>
+  <option value="panicSell">Panic Sell</option>
+  <option value="update">Update</option>
+  <option value="cancelEntry">Cancel entry</option>
+  <option value="reverse">Reverse entry</option>
+</select>
 <br><br>
 <!--<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">-->
 </form>
