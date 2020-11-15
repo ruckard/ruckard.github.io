@@ -39,8 +39,35 @@ Side:
 <br><br>
 <!--<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">-->
 </form>
-<h2>Suggested signal</h2>
-<p id="suggestedSignal">Suggested signal will be shown here</p>
+<h2>Suggested signals</h2>
+<h3>Webhook suggested signal (TradingView strategy)</h3>
+You need to set the alert_message attribute from either
+<ul>
+<li>strategy.entry</li>
+<li>strategy.exit</li>
+</ul>
+to:
+<p id="suggestedTVWebhookSignal">Suggested signal will be shown here</p>
+.
+
+The associated alert needs to be setup in this way:
+<ul>
+<li><b>Webhook URL</b>: https://zignaly.com/api/signals.php?key=MYSECRETKEY</li>
+<li><b>Message</b>: { {{strategy.order.alert_message}} , "key" : "MYSECRETKEY" }</li>
+</ul>
+
+<h3>  Email suggested signal (TradingView strategy)</h3>
+<p id="suggestedTVEmailSignal">Suggested signal will be shown here</p>
+<h3>Webhook suggested signal (Generic)</h3>
+<p id="suggestedWebhookSignal">Suggested signal will be shown here</p>
+<h3>  Email suggested signal (Generic)</h3>
+<p id="suggestedEmailSignal">Suggested signal will be shown here</p>
+<h3>GET suggested signal (Debug)</h3>
+<br>
+Warning: Using GET signals is not recommended because of security concerns. Please use only them when debugging.
+<br>
+<p id="suggestedGetSignal">Suggested signal will be shown here</p>
+
 <br><br>
 <h2>Extra useful information</h2>
 <ul id="tips"></ul>

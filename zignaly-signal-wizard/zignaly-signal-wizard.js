@@ -30,7 +30,12 @@ function setSuggestedSignal() {
   // Leverage
   var zigLeverage = document.getElementById("zigLeverage").value;
   
-  suggestedSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage;
+
 }
 
 function zigProviderTypeChange() {
