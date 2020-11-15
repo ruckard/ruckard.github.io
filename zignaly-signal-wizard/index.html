@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Zignaly Signal Wizard</title>
+  </head>
+  <body>
+    <h1>Zignaly Signal Wizard</h1>
+
+
+<form>
+Provider type:
+<select onchange="zigProviderTypeChange()" id="zigProviderType">
+  <option value="profitsharing">Profit Sharing Provider</option>
+  <option value="copytrader">Copy Trader Provider</option>
+  <option value="signalprovider">Signal Provider</option>
+</select>
+<br>
+Exchange:
+<select id="zigExchange">
+  <option value="zignaly">Zignaly Exchange</option>
+</select>
+<br>
+Exchange Type:
+<select id="zigExchangeType">
+  <option value="futures">Futures</option>
+</select>
+<br><br>
+<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">
+</form>
+<p id="suggestedSignal">Suggested signal will be shown here</p>
+  </body>
+  <script src="zignaly-signal-wizard.js"></script>
+</html>
