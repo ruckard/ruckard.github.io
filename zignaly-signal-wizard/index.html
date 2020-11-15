@@ -61,7 +61,36 @@ The associated alert needs to be setup in this way:
 </ul>
 
 <h3>  Email suggested signal (TradingView strategy)</h3>
+You need to set the alert_message attribute from either
+<ul>
+<li>strategy.entry</li>
+<li>strategy.exit</li>
+</ul>
+to:
 <p id="suggestedTVEmailSignal">Suggested signal will be shown here</p>
+.
+The associated alert needs to be setup in this way:
+<ul>
+<li>In 'More Actions' check: Send Email-to-SMS</li>
+<li><b>Message</b>: ||{{strategy.order.alert_message}}||key=MYSECRETKEY||
+MYZIGNALYREDIRECTTRIGGER</li>
+</ul>
+
+Suggested workflow for setting up Email from TradingView:
+<ul>
+<li>Setup a new Hotmail account</li>
+<li>Add it as an 'SMS email' in TradingView Profile settings page.</li>
+<li>Confirm your own the email address</li>
+<li>Create a rule in your Hotmail account that: 'Redirects' (not forwards) emails to 'signals@zignaly.email' when
+  <ul>
+  <li>(1): 'Subject' includes 'Alert'</li>
+  <li>(2): 'Email body' contains string 'MYZIGNALYREDIRECTTRIGGER'</li>
+  <li>(3): 'From' contains 'noreply@tradingview.com'.</li>
+  </ul>
+</li>
+</ul>
+
+
 <h3>Webhook suggested signal (Generic)</h3>
 <p id="suggestedWebhookSignal">Suggested signal will be shown here</p>
 <h3>  Email suggested signal (Generic)</h3>
