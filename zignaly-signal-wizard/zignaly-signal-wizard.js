@@ -44,12 +44,23 @@ function setSuggestedSignal() {
   } else {
     zigTakeProfit = "";
   }
+  // StopLoss
+  var zigEnableStopLoss = document.getElementById("zigEnableStopLoss").checked;
+  if (zigEnableStopLoss) {
+    if (zigSide === 'long') {
+      zigStopLoss = "-" + document.getElementById("zigStopLoss").value;
+    } else {
+      zigStopLoss = document.getElementById("zigStopLoss").value;
+    }
+  } else {
+    zigStopLoss = "";
+  }
 
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigTakeProfit + zigStopLoss;
 
 }
 
@@ -264,6 +275,7 @@ function zigSignalTypeChange() {
   var zigSignalType = document.getElementById("zigSignalType").value;
   if (!((zigSignalType === 'entry') || (zigSignalType === 'update'))) {
     document.getElementById("zigEnableTakeProfit").checked = false;
+    document.getElementById("zigEnableStopLoss").checked = false;
   }
   updateInfo();
 }
@@ -274,6 +286,15 @@ function zigEnableTakeProfitChange() {
 }
 
 function zigTakeProfitChange() {
+  updateInfo();
+}
+
+function zigEnableStopLossChange() {
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
+  updateInfo();
+}
+
+function zigStopLossChange() {
   updateInfo();
 }
 
@@ -454,8 +475,23 @@ function updateTips() {
   // Enable Take Profit
   var zigEnableTakeProfit = document.getElementById("zigEnableTakeProfit").checked;
   if ((zigEnableTakeProfit) && (zigSide === 'short')) {
-      tip1 = '(takeProfit) When being in short the mode take profit is set with a minus (-) sign.';
+      tip1 = '(takeProfit) When being in short mode the take profit is set with a minus (-) sign.';
 
+      addLi(tips, tip1);
+  }
+  if ((zigEnableTakeProfit) && (zigSide === 'long')) {
+      tip1 = '(takeProfit) When being in long mode the take profit is set without the minus (-) sign.';
+
+      addLi(tips, tip1);
+  }
+  // Enable Stop Loss
+  var zigEnableStopLoss = document.getElementById("zigEnableStopLoss").checked;
+  if ((zigEnableStopLoss) && (zigSide === 'long')) {
+      tip1 = '(stopLoss) When being in long mode the stop loss is set with a minus (-) sign.';
+      addLi(tips, tip1);
+  }
+  if ((zigEnableStopLoss) && (zigSide === 'short')) {
+      tip1 = '(stopLoss) When being in short the mode the stop loss is set without the minus (-) sign.';
       addLi(tips, tip1);
   }
 }

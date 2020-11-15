@@ -59,6 +59,14 @@ Signal Type:
   <option value="2.0">+ 2%</option>
   <option value="3.0">+ 3%</option>
 </select>
+<br>
+<input onchange="zigEnableStopLossChange()" type="checkbox" id="zigEnableStopLoss">Enable Stop Loss
+<select onchange="zigStopLossChange()" id="zigStopLoss">
+  <option value="1.0">- 1%</option>
+  <option value="2.0">- 2%</option>
+  <option value="3.0">- 3%</option>
+  <option value="4.0">- 4%</option>
+</select>
 <br><br>
 <!--<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">-->
 </form>
