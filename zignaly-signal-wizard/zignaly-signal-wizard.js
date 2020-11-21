@@ -366,6 +366,39 @@ function zigSignalTypeChange() {
       document.getElementById("zigEnablePositionSize").checked = false;
       document.getElementById("zigEnablePositionPercentage").checked = true;
   }
+  var entryOrderTypes = ["market", "limit", "stop-limit"];
+  var exitOrderTypes = ["market", "limit"];
+  var noOrderTypes = [];
+
+  usedOrderTypes = noOrderTypes;
+  if (zigSignalType === 'entry') {
+      usedOrderTypes = entryOrderTypes;
+  }
+  if (zigSignalType === 'exit') {
+      usedOrderTypes = exitOrderTypes;
+  }
+
+  var zigOrderType = document.getElementById("zigOrderType");
+  zigOrderType.innerHTML = "";
+
+  for(var i = 0; i < usedOrderTypes.length; i++) {
+      var opt = usedOrderTypes[i];
+
+      var el = document.createElement("option");
+      el.value = opt;
+      if (el.value === "limit") {
+          el.text = "Limit";
+      }
+      if (el.value === "market") {
+          el.text = "Market";
+      }
+      if (el.value === "stop-limit") {
+          el.text = "Stop Limit";
+      }
+
+      zigOrderType.add(el);
+  }
+  zigOrderTypeChange(); // Force OrderType change to be taken into account
   updateInfo();
 }
 
