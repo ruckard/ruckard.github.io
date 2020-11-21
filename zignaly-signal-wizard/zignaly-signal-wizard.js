@@ -305,11 +305,12 @@ function zigSignalTypeChange() {
     document.getElementById("zigEnableTakeProfit").checked = false;
     document.getElementById("zigEnableStopLoss").checked = false;
     document.getElementById("zigEnableTrailingPercentage").checked = false;
+    document.getElementById("zigEnableTrailingPrice").checked = false;
   }
   var zigProviderType = document.getElementById("zigProviderType").value;
 
-  if (zigProviderType === 'signalprovider') {
-      document.getElementById("zigEnableTrailingPercentage").checked = false;
+  if (!(zigProviderType === 'signalprovider')) {
+      document.getElementById("zigEnableTrailingPrice").checked = false;
   }
   updateInfo();
 }
@@ -333,6 +334,7 @@ function zigStopLossChange() {
 }
 
 function zigEnableTrailingPercentageChange() {
+  document.getElementById("zigEnableTrailingPrice").checked = false;
   zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
   updateInfo();
 }
@@ -346,6 +348,7 @@ function zigTrailingPercentageDistanceChange() {
 }
 
 function zigEnableTrailingPriceChange() {
+  document.getElementById("zigEnableTrailingPercentage").checked = false;
   zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
   updateInfo();
 }
