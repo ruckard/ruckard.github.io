@@ -356,15 +356,21 @@ function zigSignalTypeChange() {
   var zigEnablePositionSize = document.getElementById("zigEnablePositionSize").checked;
   var zigEnablePositionPercentage = document.getElementById("zigEnablePositionPercentage").checked;
 
-  if ((entryOrUpdate) && (zigProviderType === 'signalprovider')) {
+  if ((zigSignalType === 'entry') && (zigProviderType === 'signalprovider')) {
       if ((!zigEnablePositionPercentage) && (!zigEnablePositionPercentage)) {
         document.getElementById("zigEnablePositionSize").checked = true;
         document.getElementById("zigEnablePositionPercentage").checked = false;
       }
   }
-  if ((entryOrUpdate) && (!(zigProviderType === 'signalprovider'))) {
+  if ((zigSignalType === 'entry') && (!(zigProviderType === 'signalprovider'))) {
       document.getElementById("zigEnablePositionSize").checked = false;
       document.getElementById("zigEnablePositionPercentage").checked = true;
+  }
+  if (zigSignalType === 'update') {
+      document.getElementById("zigEnableLimitPrice").checked = false;
+      document.getElementById("zigEnableBuyStopPrice").checked = false;
+      document.getElementById("zigPositionSize").checked = false;
+      document.getElementById("zigPositionPercentage").checked = false;
   }
   var entryOrderTypes = ["market", "limit", "stop-limit"];
   var exitOrderTypes = ["market", "limit"];
@@ -469,6 +475,7 @@ function zigOrderTypeChange() {
 
 function zigEnableLimitPriceChange() {
   updateInfo();
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
   zigOrderTypeChange(); // So that it's disabled when it should not be enabled.
 }
 
@@ -478,6 +485,7 @@ function zigLimitPriceChange() {
 
 function zigEnableBuyStopPriceChange() {
   updateInfo();
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
   zigOrderTypeChange(); // So that it's disabled when it should not be enabled.
 }
 
