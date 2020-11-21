@@ -65,7 +65,21 @@ function setSuggestedSignal() {
       zigTrailingPercentageTrigger = "-" + document.getElementById("zigTrailingPercentageTrigger").value;
       zigTrailingPercentageDistance = document.getElementById("zigTrailingPercentageDistance").value;
     }
-  } else {
+  } else if (!(zigEnableTrailingPrice)) {
+    zigTrailingPercentageTrigger = "";
+    zigTrailingPercentageDistance = "";
+  }
+  // Trailing Stop Price
+  var zigEnableTrailingPrice = document.getElementById("zigEnableTrailingPrice").checked;
+  if (zigEnableTrailingPrice) {
+    if (zigSide === 'long') {
+      zigTrailingPercentageTrigger = document.getElementById("zigTrailingPriceTrigger").value;
+      zigTrailingPercentageDistance = "-" + document.getElementById("zigTrailingPriceDistance").value;
+    } else {
+      zigTrailingPercentageTrigger = "-" + document.getElementById("zigTrailingPriceTrigger").value;
+      zigTrailingPercentageDistance = document.getElementById("zigTrailingPriceDistance").value;
+    }
+  } else if (!(zigEnableTrailingPercentage)) {
     zigTrailingPercentageTrigger = "";
     zigTrailingPercentageDistance = "";
   }
@@ -331,6 +345,19 @@ function zigTrailingPercentageDistanceChange() {
   updateInfo();
 }
 
+function zigEnableTrailingPriceChange() {
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
+  updateInfo();
+}
+
+function zigTrailingPriceTriggerChange() {
+  updateInfo();
+}
+
+function zigTrailingPriceDistanceChange() {
+  updateInfo();
+}
+
 function addLi(ulField, text) {
   var node = document.createElement("LI");
   var textNode = document.createTextNode(text);
@@ -538,6 +565,24 @@ function updateTips() {
       addLi(tips, tip1);
   }
   if ((zigEnableTrailingPercentage) && (zigSide === 'long')) {
+      tip1 = '(trailingStopTriggerPercentage) When being in long mode the trigger is set without the minus sign ( ).';
+
+      addLi(tips, tip1);
+      tip1 = '(trailingStopTriggerDistance) When being in long mode the distance is set with a minus sign (-).';
+
+      addLi(tips, tip1);
+  }
+  // Enable Trailing Stop Price
+  var zigEnableTrailingPrice = document.getElementById("zigEnableTrailingPrice").checked;
+  if ((zigEnableTrailingPrice) && (zigSide === 'short')) {
+      tip1 = '(trailingStopTriggerPercentage) When being in short mode the trigger is set with a minus sign (-).';
+
+      addLi(tips, tip1);
+      tip1 = '(trailingStopTriggerDistance) When being in short mode the distance is set without the minus sign ( ).';
+
+      addLi(tips, tip1);
+  }
+  if ((zigEnableTrailingPrice) && (zigSide === 'long')) {
       tip1 = '(trailingStopTriggerPercentage) When being in long mode the trigger is set without the minus sign ( ).';
 
       addLi(tips, tip1);
