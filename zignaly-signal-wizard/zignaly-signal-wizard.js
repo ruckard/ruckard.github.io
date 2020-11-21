@@ -587,6 +587,11 @@ function updateTips() {
 
       addLi(tips, tip1);
   }
+  if (zigEnableTrailingPrice) {
+      tip1 = '(trailingStopTriggerPrice) If you don\'t send it, the one from the user\'s settings for this provider will be used..';
+
+      addLi(tips, tip1);
+  }
 }
 
 function updateInfo() {
