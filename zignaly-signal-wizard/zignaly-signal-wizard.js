@@ -387,6 +387,7 @@ function updateTips() {
 
 
   var zigProviderType = document.getElementById("zigProviderType").value;
+  var zigOrderType = document.getElementById("zigOrderType").value;
 
 
   // Profit Sharing Provider
@@ -600,6 +601,11 @@ function updateTips() {
   }
   if (zigEnableTrailingPrice) {
       tip1 = '(trailingStopTriggerPrice) If you don\'t send it, the one from the user\'s settings for this provider will be used..';
+
+      addLi(tips, tip1);
+  }
+  if ((zigOrderType === 'market') && (zigProviderType === 'signalprovider')) {
+      tip1 = '(orderType=market) To accept market buy orders, the user has to check the option: Allow buy market order (your price deviation won\'t have effect)';
 
       addLi(tips, tip1);
   }
