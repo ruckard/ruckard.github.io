@@ -145,7 +145,7 @@ function setSuggestedSignal() {
     + WebHookGen("limitPrice", zigLimitPrice)
     + WebHookGen("buyStopPrice", zigBuyStopPrice)
     + WebHookGen("positionSize", zigPositionSize)
-    + WebHookGen("positionPercentage", zigPositionPercentage)
+    + WebHookGen("positionSizePercentage", zigPositionPercentage)
     + WebHookGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
     + WebHookGen("takeProfit1", zigTakeProfit)
     + WebHookGen("stopLossPercentage", zigStopLoss)
