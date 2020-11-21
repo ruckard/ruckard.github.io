@@ -59,6 +59,15 @@ Order Type:
   <option value="stop-limit">Stop Limit</option>
 </select>
 <br>
+<input onchange="zigEnableLimitPriceChange()" type="checkbox" id="zigEnableLimitPrice">Limit price:
+<select onchange="zigLimitPriceChange()" id="zigLimitPrice">
+  <option value="101">101</option>
+  <option value="151">151</option>
+  <option value="201">201</option>
+  <option value="251">251</option>
+</select>
+USDT.
+<br>
 <input onchange="zigEnableTakeProfitChange()" type="checkbox" id="zigEnableTakeProfit">Enable Take Profit
 <select onchange="zigTakeProfitChange()" id="zigTakeProfit">
   <option value="0.5">+ 0.5%</option>
