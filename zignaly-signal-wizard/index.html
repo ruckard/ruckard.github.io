@@ -77,7 +77,7 @@ USDT.
 </select>
 USDT.
 <br>
-<input onchange="zigEnablePositionSizeChange()" type="checkbox" id="zigEnablePositionSize">Position size:
+<input onchange="zigEnablePositionSizeChange()" type="checkbox" id="zigEnablePositionSize">Position based on size:
 <select onchange="zigPositionSizeChange()" id="zigPositionSize">
   <option value="103">103</option>
   <option value="153">153</option>
@@ -86,15 +86,22 @@ USDT.
 </select>
 USDT.
 <br>
-<input onchange="zigEnablePositionPercentageChange()" type="checkbox" id="zigEnablePositionPercentage">Position percentage:
+<input onchange="zigEnablePositionPercentageChange()" type="checkbox" id="zigEnablePositionPercentage">Position based on
 <select onchange="zigPositionPercentageChange()" id="zigPositionPercentage">
   <option value="50.0">50%</option>
   <option value="60.0">60%</option>
   <option value="70.0">70%</option>
   <option value="99.0">99%</option>
 </select>
+of your allocation.
 <br>
-<input onchange="zigEnableTakeProfitChange()" type="checkbox" id="zigEnableTakeProfit">Enable Take Profit
+<input onchange="zigEnableTakeProfitChange()" type="checkbox" id="zigEnableTakeProfit">Enable Take Profit on the
+<select onchange="zigTakeProfitPositionPercentageChange()" id="zigTakeProfitPositionPercentage">
+  <option value="100.0">100%</option>
+  <option value="60.0">60%</option>
+  <option value="40.0">40%</option>
+  <option value="20.0">20%</option>
+</select> of your position when the price is equal or greater than:
 <select onchange="zigTakeProfitChange()" id="zigTakeProfit">
   <option value="0.5">+ 0.5%</option>
   <option value="1.0">+ 1%</option>
@@ -102,7 +109,7 @@ USDT.
   <option value="3.0">+ 3%</option>
 </select>
 <br>
-<input onchange="zigEnableStopLossChange()" type="checkbox" id="zigEnableStopLoss">Enable Stop Loss
+<input onchange="zigEnableStopLossChange()" type="checkbox" id="zigEnableStopLoss">Enable Stop Loss on the 100% of your position when the price is equal or lesser than:
 <select onchange="zigStopLossChange()" id="zigStopLoss">
   <option value="1.0">- 1%</option>
   <option value="2.0">- 2%</option>

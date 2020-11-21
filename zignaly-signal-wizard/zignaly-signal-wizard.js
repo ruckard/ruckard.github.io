@@ -75,8 +75,10 @@ function setSuggestedSignal() {
     } else {
       zigTakeProfit = "-" + document.getElementById("zigTakeProfit").value;
     }
+    zigTakeProfitPositionPercentage = document.getElementById("zigTakeProfitPositionPercentage").value;
   } else {
     zigTakeProfit = "";
+    zigTakeProfitPositionPercentage = "";
   }
   // StopLoss
   var zigEnableStopLoss = document.getElementById("zigEnableStopLoss").checked;
@@ -122,11 +124,11 @@ function setSuggestedSignal() {
     }
   }
 
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
 
 }
 
@@ -414,6 +416,10 @@ function zigEnableTakeProfitChange() {
 }
 
 function zigTakeProfitChange() {
+  updateInfo();
+}
+
+function zigTakeProfitPositionPercentageChange() {
   updateInfo();
 }
 
