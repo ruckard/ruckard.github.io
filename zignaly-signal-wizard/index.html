@@ -52,6 +52,13 @@ Signal Type:
   <option value="reverse">Reverse entry</option>
 </select>
 <br>
+Order Type:
+<select onchange="zigOrderTypeChange()" id="zigOrderType">
+  <option value="market">Market</option> <!-- Despite Zignaly default being limit, we are going to choose market so that someone does not blindly run our suggested order and buys in a non-market price range -->
+  <option value="limit">Limit</option>
+  <option value="stop-limit">Stop Limit</option>
+</select>
+<br>
 <input onchange="zigEnableTakeProfitChange()" type="checkbox" id="zigEnableTakeProfit">Enable Take Profit
 <select onchange="zigTakeProfitChange()" id="zigTakeProfit">
   <option value="0.5">+ 0.5%</option>
