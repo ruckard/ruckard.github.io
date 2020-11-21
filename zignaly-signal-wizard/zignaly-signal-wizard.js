@@ -578,17 +578,11 @@ function updateTips() {
   // Enable Trailing Stop Price
   var zigEnableTrailingPrice = document.getElementById("zigEnableTrailingPrice").checked;
   if ((zigEnableTrailingPrice) && (zigSide === 'short')) {
-      tip1 = '(trailingStopTriggerPercentage) When being in short mode the trigger is set with a minus sign (-).';
-
-      addLi(tips, tip1);
       tip1 = '(trailingStopTriggerDistance) When being in short mode the distance is set without the minus sign ( ).';
 
       addLi(tips, tip1);
   }
   if ((zigEnableTrailingPrice) && (zigSide === 'long')) {
-      tip1 = '(trailingStopTriggerPercentage) When being in long mode the trigger is set without the minus sign ( ).';
-
-      addLi(tips, tip1);
       tip1 = '(trailingStopTriggerDistance) When being in long mode the distance is set with a minus sign (-).';
 
       addLi(tips, tip1);
