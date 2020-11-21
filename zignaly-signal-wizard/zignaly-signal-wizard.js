@@ -44,6 +44,14 @@ function setSuggestedSignal() {
     zigLimitPrice = "";
   }
 
+  // BuyStopPrice
+  var zigEnableBuyStopPrice = document.getElementById("zigEnableBuyStopPrice").checked;
+  if (zigEnableBuyStopPrice) {
+    zigBuyStopPrice = document.getElementById("zigBuyStopPrice").value;
+  } else {
+    zigBuyStopPrice = "";
+  }
+
   // TakeProfit
   var zigEnableTakeProfit = document.getElementById("zigEnableTakeProfit").checked;
   if (zigEnableTakeProfit) {
@@ -99,11 +107,11 @@ function setSuggestedSignal() {
     }
   }
 
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
 
 }
 
@@ -377,6 +385,21 @@ function zigTrailingPriceDistanceChange() {
 }
 
 function zigOrderTypeChange() {
+  var zigOrderType = document.getElementById("zigOrderType").value;
+  if ((zigOrderType === 'market') || (zigSignalType === 'limit')) {
+    document.getElementById("zigEnableBuyStopPrice").checked = false;
+  }
+  if (zigOrderType === 'market') {
+    document.getElementById("zigEnableLimitPrice").checked = false;
+  }
+  if (zigOrderType === 'limit') {
+    document.getElementById("zigEnableLimitPrice").checked = true;
+    document.getElementById("zigEnableBuyStopPrice").checked = false;
+  }
+  if (zigOrderType === 'stop-limit') {
+    document.getElementById("zigEnableLimitPrice").checked = true;
+    document.getElementById("zigEnableBuyStopPrice").checked = true;
+  }
   updateInfo();
 }
 
@@ -386,6 +409,15 @@ function zigEnableLimitPriceChange() {
 }
 
 function zigLimitPriceChange() {
+  updateInfo();
+}
+
+function zigEnableBuyStopPriceChange() {
+  updateInfo();
+  zigOrderTypeChange(); // So that it's disabled when it should not be enabled.
+}
+
+function zigBuyStopPriceChange() {
   updateInfo();
 }
 
