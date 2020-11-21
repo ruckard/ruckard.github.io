@@ -2,7 +2,7 @@
 let suggestedSignal = document.getElementById('suggestedSignal');
 let signalButton = document.getElementById('signalWizardButton');
 
-zigProviderTypeChange();
+zigProviderTypeChange(); // Force a valid init
 
 function setSuggestedSignal() {
   // Define variables
@@ -50,6 +50,21 @@ function setSuggestedSignal() {
     zigBuyStopPrice = document.getElementById("zigBuyStopPrice").value;
   } else {
     zigBuyStopPrice = "";
+  }
+
+  // Position Percentage
+  var zigEnablePositionPercentage = document.getElementById("zigEnablePositionPercentage").checked;
+  if (zigEnablePositionPercentage) {
+    zigPositionPercentage = document.getElementById("zigPositionPercentage").value;
+  } else {
+    zigPositionPercentage = "";
+  }
+  // Position Size
+  var zigEnablePositionSize = document.getElementById("zigEnablePositionSize").checked;
+  if (zigEnablePositionSize) {
+    zigPositionSize = document.getElementById("zigPositionSize").value;
+  } else {
+    zigPositionSize = "";
   }
 
   // TakeProfit
@@ -107,11 +122,11 @@ function setSuggestedSignal() {
     }
   }
 
-  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
 
 }
 
@@ -324,16 +339,32 @@ function zigLeverageChange() {
 
 function zigSignalTypeChange() {
   var zigSignalType = document.getElementById("zigSignalType").value;
-  if (!((zigSignalType === 'entry') || (zigSignalType === 'update'))) {
+  var entryOrUpdate = ((zigSignalType === 'entry') || (zigSignalType === 'update'));
+  if (! entryOrUpdate) {
     document.getElementById("zigEnableTakeProfit").checked = false;
     document.getElementById("zigEnableStopLoss").checked = false;
     document.getElementById("zigEnableTrailingPercentage").checked = false;
     document.getElementById("zigEnableTrailingPrice").checked = false;
+    document.getElementById("zigEnablePositionSize").checked = false;
+    document.getElementById("zigEnablePositionPercentage").checked = false;
   }
   var zigProviderType = document.getElementById("zigProviderType").value;
 
   if (!(zigProviderType === 'signalprovider')) {
       document.getElementById("zigEnableTrailingPrice").checked = false;
+  }
+  var zigEnablePositionSize = document.getElementById("zigEnablePositionSize").checked;
+  var zigEnablePositionPercentage = document.getElementById("zigEnablePositionPercentage").checked;
+
+  if ((entryOrUpdate) && (zigProviderType === 'signalprovider')) {
+      if ((!zigEnablePositionPercentage) && (!zigEnablePositionPercentage)) {
+        document.getElementById("zigEnablePositionSize").checked = true;
+        document.getElementById("zigEnablePositionPercentage").checked = false;
+      }
+  }
+  if ((entryOrUpdate) && (!(zigProviderType === 'signalprovider'))) {
+      document.getElementById("zigEnablePositionSize").checked = false;
+      document.getElementById("zigEnablePositionPercentage").checked = true;
   }
   updateInfo();
 }
@@ -418,6 +449,26 @@ function zigEnableBuyStopPriceChange() {
 }
 
 function zigBuyStopPriceChange() {
+  updateInfo();
+}
+
+function zigEnablePositionSizeChange() {
+  document.getElementById("zigEnablePositionPercentage").checked = false;
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
+  updateInfo();
+}
+
+function zigEnablePositionPercentageChange() {
+  document.getElementById("zigEnablePositionSize").checked = false;
+  zigSignalTypeChange(); // So that it's disabled when it should not be enabled.
+  updateInfo();
+}
+
+function zigPositionSizeChange() {
+  updateInfo();
+}
+
+function zigPositionPercentageChange() {
   updateInfo();
 }
 

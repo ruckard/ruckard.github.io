@@ -77,6 +77,23 @@ USDT.
 </select>
 USDT.
 <br>
+<input onchange="zigEnablePositionSizeChange()" type="checkbox" id="zigEnablePositionSize">Position size:
+<select onchange="zigPositionSizeChange()" id="zigPositionSize">
+  <option value="103">103</option>
+  <option value="153">153</option>
+  <option value="203">203</option>
+  <option value="253">253</option>
+</select>
+USDT.
+<br>
+<input onchange="zigEnablePositionPercentageChange()" type="checkbox" id="zigEnablePositionPercentage">Position percentage:
+<select onchange="zigPositionPercentageChange()" id="zigPositionPercentage">
+  <option value="50.0">50%</option>
+  <option value="60.0">60%</option>
+  <option value="70.0">70%</option>
+  <option value="99.0">99%</option>
+</select>
+<br>
 <input onchange="zigEnableTakeProfitChange()" type="checkbox" id="zigEnableTakeProfit">Enable Take Profit
 <select onchange="zigTakeProfitChange()" id="zigTakeProfit">
   <option value="0.5">+ 0.5%</option>
