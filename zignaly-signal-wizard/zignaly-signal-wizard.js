@@ -391,10 +391,8 @@ function zigSignalTypeChange() {
   var zigEnablePositionPercentage = document.getElementById("zigEnablePositionPercentage").checked;
 
   if ((zigSignalType === 'entry') && (zigProviderType === 'signalprovider')) {
-      if ((!zigEnablePositionPercentage) && (!zigEnablePositionPercentage)) {
-        document.getElementById("zigEnablePositionSize").checked = true;
-        document.getElementById("zigEnablePositionPercentage").checked = false;
-      }
+      document.getElementById("zigEnablePositionSize").checked = true;
+      document.getElementById("zigEnablePositionPercentage").checked = false;
   }
   if ((zigSignalType === 'entry') && (!(zigProviderType === 'signalprovider'))) {
       document.getElementById("zigEnablePositionSize").checked = false;
