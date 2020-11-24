@@ -7,7 +7,27 @@
   <body>
     <h1>Zignaly Signal Wizard</h1>
 
+    <h2>Introduction</h2>
+You have finally decide to use Zignaly as a Copy-Trading service. You might want to earn some money thanks to the <b>profitsharing</b> system. You might want to help others to increase their funds without removing from their exchange thanks to the classic <b>CopyTrading</b> system. Or maybe you are an expert and you want other experts to gather your <b>signals</b>.
 
+Finally you can also have your own private Copy-Trading service for testing your own strategies.
+
+However you don't want to trade manually but to automate your trading either thanks to TradingView or to another scripting system.
+
+A problem has arisen though. You have found the Zignaly documentation about signals:
+
+<ul>
+<li><a target="_blank" href="https://docs.zignaly.com/signals/how-to">How to send signals to Zignaly</a></li>
+<li><a target="_blank" href="https://help.zignaly.com/hc/en-us/articles/360015933199-SIGNALS">SIGNALS</a></li>
+</ul>
+
+We will just say that although Zignaly documentation is nice as a reference it is a bit messy when you want to test what you can do with Zignaly somewhat quickly and with ease.
+
+So here there is a nice Zignaly Signal Wizard for you.
+
+It does not have all the possible options (see above for the official documentation) but it will help you to craft your first signals.
+<h2>Step 1: Choose your options</h2>
+<br><br>
 <form>
 Provider type:
 <select onchange="zigProviderTypeChange()" id="zigProviderType">
@@ -152,10 +172,10 @@ distance.
 <!--<input id="signalWizardButton" type="button" onclick="setSuggestedSignal()" value="Generate Signal">-->
 </form>
 
-<h2>Extra useful information</h2>
+<h2>Step 2: Read this extra useful information</h2>
 <ul id="tips"></ul>
 
-<h2>Suggested signals</h2>
+<h2>Step 3: Choose a way of interacting with Zignaly</h2>
 <h3>Webhook suggested signal (TradingView strategy)</h3>
 You need to set the alert_message attribute from either
 <ul>
@@ -213,13 +233,8 @@ Warning: Using GET signals is not recommended because of security concerns. Plea
 <br>
 <p id="suggestedGetSignal">Suggested signal will be shown here</p>
 
-<h3>Non used fields</h3>
 
-These fields either made the wizard too complex to program or maybe they were too niche fields.
-
-<ul>
-<li>price</li>
-</ul>
+<h2>Step 4: Beyond the wizard</h2>
 
 
 </body>
