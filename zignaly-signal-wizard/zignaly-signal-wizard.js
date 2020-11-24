@@ -17,6 +17,9 @@ function WebHookGen (attribute, value) {
 function setSuggestedSignal() {
   // Define variables
   var zigExchangeType="";
+  // Pair
+  var zigPairQuote = document.getElementById("zigPairQuote").value;
+  var zigPairBase = document.getElementById("zigPairBase").value;
   // Exchange
   var zigExchange = document.getElementById("zigExchange").value;
   // Provider type
@@ -136,6 +139,7 @@ function setSuggestedSignal() {
 
   suggestedWebhookSignal.innerHTML = "{"
     + "<br>"
+    + WebHookGen("pair", (zigPairQuote + zigPairBase))
     + WebHookGen("exchange", zigExchange)
     + WebHookGen("exchangeType", zigExchangeType)
     + WebHookGen("side", zigSide)
@@ -546,6 +550,19 @@ function zigPositionSizeChange() {
 }
 
 function zigPositionPercentageChange() {
+  updateInfo();
+}
+
+function zigPairQuoteChange() {
+  updateInfo();
+}
+
+function zigPairBaseChange() {
+  var zigPairBase = document.getElementById("zigPairBase").value;
+  document.getElementById("PAIRBASE1").innerHTML = zigPairBase;
+  document.getElementById("PAIRBASE2").innerHTML = zigPairBase;
+  document.getElementById("PAIRBASE3").innerHTML = zigPairBase;
+  document.getElementById("PAIRBASE4").innerHTML = zigPairBase;
   updateInfo();
 }
 

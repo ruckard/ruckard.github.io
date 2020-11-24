@@ -29,6 +29,17 @@ It does not have all the possible options (see above for the official documentat
 <h2>Step 1: Choose your options</h2>
 <br><br>
 <form>
+Pair:
+<select onchange="zigPairQuoteChange()" id="zigPairQuote">
+  <option value="BTC">BTC</option>
+  <option value="ETH">ETH</option>
+  <option value="LTC">LTC</option>
+</select> /
+<select onchange="zigPairBaseChange()" id="zigPairBase">
+  <option value="USDT">USDT</option>
+  <option value="BTC">BTC</option>
+</select>
+<br>
 Provider type:
 <select onchange="zigProviderTypeChange()" id="zigProviderType">
   <option value="profitsharing">Profit Sharing Provider</option>
@@ -86,7 +97,7 @@ Order Type:
   <option value="201">201</option>
   <option value="251">251</option>
 </select>
-USDT.
+<span id="PAIRBASE1">USDT</span>.
 <br>
 <input onchange="zigEnableBuyStopPriceChange()" type="checkbox" id="zigEnableBuyStopPrice">Entry Stop price:
 <select onchange="zigBuyStopPriceChange()" id="zigBuyStopPrice">
@@ -95,7 +106,7 @@ USDT.
   <option value="192">192</option>
   <option value="242">242</option>
 </select>
-USDT.
+<span id="PAIRBASE2">USDT</span>.
 <br>
 <input onchange="zigEnablePositionSizeChange()" type="checkbox" id="zigEnablePositionSize">Position based on size:
 <select onchange="zigPositionSizeChange()" id="zigPositionSize">
@@ -104,7 +115,7 @@ USDT.
   <option value="203">203</option>
   <option value="253">253</option>
 </select>
-USDT.
+<span id="PAIRBASE3">USDT</span>.
 <br>
 <input onchange="zigEnablePositionPercentageChange()" type="checkbox" id="zigEnablePositionPercentage">Position based on
 <select onchange="zigPositionPercentageChange()" id="zigPositionPercentage">
@@ -160,7 +171,7 @@ distance.
   <option value="200">200</option>
   <option value="250">250</option>
 </select>
-USDT and then use a
+<span id="PAIRBASE4">USDT</span> and then use a
 <select onchange="zigTrailingPriceDistanceChange()" id="zigTrailingPriceDistance">
   <option value="0.7">0.7%</option>
   <option value="1.7">1.7%</option>
