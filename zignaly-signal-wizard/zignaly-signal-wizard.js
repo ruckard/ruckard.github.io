@@ -24,6 +24,16 @@ function EmailGen (attribute, value) {
     }
 }
 
+function EmailTVGen (attribute, value) {
+    var emailgen_return = "";
+    if (value == "") {
+        return ("");
+    } else {
+        emailgen_return = attribute + '=' + value + '||';
+        return (emailgen_return);
+    }
+}
+
 function setSuggestedSignal() {
   // Define variables
   var zigExchangeType="";
@@ -193,9 +203,30 @@ function setSuggestedSignal() {
     + "<br>"
     ;
 
+  var tmpSuggestedTVEmailSignal = ""
+    + EmailTVGen("pair", (zigPairQuote + zigPairBase))
+    + EmailTVGen("exchange", zigExchange)
+    + EmailTVGen("exchangeType", zigExchangeType)
+    + EmailTVGen("side", zigSide)
+    + EmailTVGen("leverage", zigLeverage)
+    + EmailTVGen("signalType", zigSignalType)
+    + EmailTVGen("orderType", zigOrderType)
+    + EmailTVGen("limitPrice", zigLimitPrice)
+    + EmailTVGen("buyStopPrice", zigBuyStopPrice)
+    + EmailTVGen("positionSize", zigPositionSize)
+    + EmailTVGen("positionSizePercentage", zigPositionPercentage)
+    + EmailTVGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
+    + EmailTVGen("takeProfit1", zigTakeProfit)
+    + EmailTVGen("stopLossPercentage", zigStopLoss)
+    + EmailTVGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
+    + EmailTVGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
+    + EmailTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
+    ;
+
+    suggestedTVEmailSignal.innerHTML = tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<br>";
+
   suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
   suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
 
 }
 
