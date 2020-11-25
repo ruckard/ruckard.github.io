@@ -172,8 +172,8 @@ function zigProviderTypeChange() {
   var zigProviderType = document.getElementById("zigProviderType").value;
 
   var profitSharingExchanges = ["zignaly"];
-  var copyTraderExchanges = ["binance", "kucoin", "zignaly"]; 
-  var signalProviderExchanges = ["binance", "kucoin", "zignaly"]; 
+  var copyTraderExchanges = ["binance", "kucoin", "zignaly", "bitmex"];
+  var signalProviderExchanges = ["binance", "kucoin", "zignaly", "bitmex"];
 
   if (zigProviderType === 'profitsharing') {
       usedExchanges = profitSharingExchanges;
@@ -201,6 +201,9 @@ function zigProviderTypeChange() {
       }
       if (el.value === "zignaly") {
           el.text = "Zignaly";
+      }
+      if (el.value === "bitmex") {
+          el.text = "BitMEX";
       }
 
       zigExchange.add(el);
@@ -334,6 +337,7 @@ function zigExchangeChange() {
   var zignalyExchangeTypes = ["futures"];
   var binanceExchangeTypes = ["spot", "futures"];
   var kucoinExchangeTypes = ["spot", "futures"];
+  var bitmexExchangeTypes = ["futures"];
 
   if (zigExchange === 'zignaly') {
       usedExchangeTypes = zignalyExchangeTypes;
@@ -343,6 +347,9 @@ function zigExchangeChange() {
   }
   if (zigExchange === 'kucoin') {
       usedExchangeTypes = kucoinExchangeTypes;
+  }
+  if (zigExchange === 'bitmex') {
+      usedExchangeTypes = bitmexExchangeTypes;
   }
 
   var zigExchangeType = document.getElementById("zigExchangeType");
@@ -611,6 +618,12 @@ function updateTips() {
   // Exchange
   if (zigExchange === 'zignaly') {
       tip1 = 'Zignaly Exchange is under the hood a binance account. If the final users want to divide their allocated money into different providers it is easier to do so when using Profit Sharing providers because one provider can go long and another provider can go short and there is not a problem in futures as it would happened with a Copy Trader provider.';
+
+      addLi(tips, tip1);
+
+  }
+  if (zigExchange === 'bitmex') {
+      tip1 = 'Bitmex cannot be used in Spot but only in Futures.';
 
       addLi(tips, tip1);
 
