@@ -14,6 +14,16 @@ function WebHookGen (attribute, value) {
     }
 }
 
+function EmailGen (attribute, value) {
+    var emailgen_return = "";
+    if (value == "") {
+        return ("");
+    } else {
+        emailgen_return = '&nbsp;&nbsp;' + attribute + '=' + value + '<br>';
+        return (emailgen_return);
+    }
+}
+
 function setSuggestedSignal() {
   // Define variables
   var zigExchangeType="";
@@ -161,7 +171,28 @@ function setSuggestedSignal() {
     + "}"
     ;
 
-  suggestedEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  suggestedEmailSignal.innerHTML = ""
+    + EmailGen("pair", (zigPairQuote + zigPairBase))
+    + EmailGen("exchange", zigExchange)
+    + EmailGen("exchangeType", zigExchangeType)
+    + EmailGen("side", zigSide)
+    + EmailGen("leverage", zigLeverage)
+    + EmailGen("signalType", zigSignalType)
+    + EmailGen("orderType", zigOrderType)
+    + EmailGen("limitPrice", zigLimitPrice)
+    + EmailGen("buyStopPrice", zigBuyStopPrice)
+    + EmailGen("positionSize", zigPositionSize)
+    + EmailGen("positionSizePercentage", zigPositionPercentage)
+    + EmailGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
+    + EmailGen("takeProfit1", zigTakeProfit)
+    + EmailGen("stopLossPercentage", zigStopLoss)
+    + EmailGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
+    + EmailGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
+    + EmailGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
+    + '&nbsp;&nbsp;key=MYSECRETKEY'
+    + "<br>"
+    ;
+
   suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
   suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
   suggestedTVEmailSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
