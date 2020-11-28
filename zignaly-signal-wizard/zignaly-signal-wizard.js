@@ -1,6 +1,7 @@
 
 let suggestedSignal = document.getElementById('suggestedSignal');
 let signalButton = document.getElementById('signalWizardButton');
+let zignalyAPIURL = 'https://zignaly.com/api/signals.php';
 
 zigProviderTypeChange(); // Force a valid init
 
@@ -41,6 +42,16 @@ function EmailTVGen (attribute, value) {
     } else {
         emailgen_return = attribute + '=' + value + '||';
         return (emailgen_return);
+    }
+}
+
+function GetGen (attribute, value) {
+    var getgen_return = "";
+    if (value == "") {
+        return ("");
+    } else {
+        getgen_return = attribute + '=' + value + '&';
+        return (getgen_return);
     }
 }
 
@@ -254,9 +265,31 @@ function setSuggestedSignal() {
     + WebHookTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
     ;
 
-    suggestedTVWebhookSignal.innerHTML = tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1);
+  suggestedTVWebhookSignal.innerHTML = tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1);
 
-  suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
+  var tmpSuggestedGetSignal = zignalyAPIURL + '?'
+    + GetGen("pair", (zigPairQuote + zigPairBase))
+    + GetGen("exchange", zigExchange)
+    + GetGen("exchangeType", zigExchangeType)
+    + GetGen("side", zigSide)
+    + GetGen("leverage", zigLeverage)
+    + GetGen("signalType", zigSignalType)
+    + GetGen("orderType", zigOrderType)
+    + GetGen("limitPrice", zigLimitPrice)
+    + GetGen("buyStopPrice", zigBuyStopPrice)
+    + GetGen("positionSize", zigPositionSize)
+    + GetGen("positionSizePercentage", zigPositionPercentage)
+    + GetGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
+    + GetGen("takeProfit1", zigTakeProfit)
+    + GetGen("stopLossPercentage", zigStopLoss)
+    + GetGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
+    + GetGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
+    + GetGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
+    ;
+
+  suggestedGetSignal.innerHTML = tmpSuggestedGetSignal.substring(0, tmpSuggestedGetSignal.length - 1) + '&key=MYSECRETKEY';
+
+//   suggestedGetSignal.innerHTML = zignalyAPIURL + zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
 
 }
 
