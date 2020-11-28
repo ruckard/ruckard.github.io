@@ -194,7 +194,7 @@ distance.
 <ul id="tips"></ul>
 
 <h2>Step 3: Choose a way of interacting with Zignaly</h2>
-<h3 onclick="tradingviewWebhookChoosenToggleDisplay()"><span id="tradingview-webhook-choosen-plus">(+)</span>Webhook suggested signal (TradingView strategy)</h3>
+<h3 onclick="tradingviewWebhookChoosenToggleDisplay()"><span id="tradingview-webhook-choosen-plus">(+)</span>TradingView strategy - WebHook</h3>
 <span style="display:none" id="tradingview-webhook-choosen">
 You need to set the alert_message attribute from either
 <ul>
@@ -211,7 +211,7 @@ The associated alert needs to be setup in this way:
 <li><b>Message</b>: { {{strategy.order.alert_message}} , "key" : "MYSECRETKEY" }</li>
 </ul>
 </span>
-<h3 onclick="tradingviewEmailChoosenToggleDisplay()"><span id="tradingview-email-choosen-plus">(+)</span>Email suggested signal (TradingView strategy)</h3>
+<h3 onclick="tradingviewEmailChoosenToggleDisplay()"><span id="tradingview-email-choosen-plus">(+)</span>TradingView strategy - Email</h3>
 <span style="display:none" id="tradingview-email-choosen">
 You need to set the alert_message attribute from either
 <ul>
@@ -242,15 +242,15 @@ Suggested workflow for setting up Email from TradingView:
 </li>
 </ul>
 </span>
-<h3 onclick="genericWebHookChoosenToggleDisplay()"><span id="generic-webhook-choosen-plus">(+)</span>Webhook suggested signal (Generic)</h3>
+<h3 onclick="genericWebHookChoosenToggleDisplay()"><span id="generic-webhook-choosen-plus">(+)</span>Generic - WebHook</h3>
 <span style="display:none" id="generic-webhook-choosen">
 <p id="suggestedWebhookSignal">Suggested signal will be shown here</p>
 </span>
-<h3 onclick="genericEmailChoosenToggleDisplay()"><span id="generic-email-choosen-plus">(+)</span>Email suggested signal (Generic)</h3>
+<h3 onclick="genericEmailChoosenToggleDisplay()"><span id="generic-email-choosen-plus">(+)</span>Generic - Email</h3>
 <span style="display:none" id="generic-email-choosen">
 <p id="suggestedEmailSignal">Suggested signal will be shown here</p>
 </span>
-<h3 onclick="genericGetChoosenToggleDisplay()"><span id="generic-get-choosen-plus">(+)</span>GET suggested signal (Debug)</h3>
+<h3 onclick="genericGetChoosenToggleDisplay()"><span id="generic-get-choosen-plus">(+)</span>Debug - GET</h3>
 <span style="display:none" id="generic-get-choosen">
 <br>
 Warning: Using GET signals is not recommended because of security concerns. Please use only them when debugging.
