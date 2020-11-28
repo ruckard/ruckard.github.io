@@ -735,6 +735,14 @@ function genericGetChoosenToggleDisplay() {
   metaChoosenToggleDisplay("generic-get-choosen");
 }
 
+function introductionToggleDisplay() {
+  metaChoosenToggleDisplay("introduction");
+}
+
+function warningToggleDisplay() {
+  metaChoosenToggleDisplay("warning");
+}
+
 // function tradingviewWebhookChoosenToggleDisplay() {
 //   var currentDisplay = document.getElementById("tradingview-webhook-choosen").style.display;
 //   document.getElementById("tradingview-webhook-choosen").style.display = (currentDisplay == "block") ? "none" : "block" ;
