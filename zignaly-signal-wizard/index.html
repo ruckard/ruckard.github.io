@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1>Zignaly Signal Wizard</h1>
-<h2 onclick="introductionToggleDisplay()"><span id="introduction-plus">(+)</span>Introduction</h2>
+<h2 onclick="introductionToggleDisplay()"><span id="introduction-plus">(+)</span> Introduction</h2>
 <span style="display:none" id="introduction">
 You have finally decide to use Zignaly as a Copy-Trading service (as a trader whom others would copy, not as a final user whom would copy other traders trades). You might want to earn some money thanks to the <b>profitsharing</b> system. You might want to help others to increase their funds without removing from their exchange thanks to the classic <b>CopyTrading</b> system. Or maybe you are an expert and you want other experts to gather your <b>signals</b>.
 
@@ -26,7 +26,7 @@ We will just say that although Zignaly documentation is nice as a reference it i
 
 So here there is a nice Zignaly Signal Wizard for you.
 </span>
-<h2 onclick="warningToggleDisplay()"><span id="warning-plus">(+)</span>Warning</h2>
+<h2 onclick="warningToggleDisplay()"><span id="warning-plus">(+)</span> Warning</h2>
 <span style="display:none" id="warning">
 <ul>
 <li>It does not have all the possible fields (see above for the official documentation).</li>
@@ -195,7 +195,7 @@ distance.
 
 
 <h2>Step 2: Choose a way of interacting with Zignaly</h2>
-<h3 onclick="tradingviewWebhookChoosenToggleDisplay()"><span id="tradingview-webhook-choosen-plus">(+)</span>TradingView strategy - WebHook</h3>
+<h3 onclick="tradingviewWebhookChoosenToggleDisplay()"><span id="tradingview-webhook-choosen-plus">(+)</span> TradingView strategy - WebHook</h3>
 <span style="display:none" id="tradingview-webhook-choosen">
 You need to set the alert_message attribute from either
 <ul>
@@ -212,7 +212,7 @@ The associated alert needs to be setup in this way:
 <li><b>Message</b>: { {{strategy.order.alert_message}} , "key" : "MYSECRETKEY" }</li>
 </ul>
 </span>
-<h3 onclick="tradingviewEmailChoosenToggleDisplay()"><span id="tradingview-email-choosen-plus">(+)</span>TradingView strategy - Email</h3>
+<h3 onclick="tradingviewEmailChoosenToggleDisplay()"><span id="tradingview-email-choosen-plus">(+)</span> TradingView strategy - Email</h3>
 <span style="display:none" id="tradingview-email-choosen">
 You need to set the alert_message attribute from either
 <ul>
@@ -243,15 +243,15 @@ Suggested workflow for setting up Email from TradingView:
 </li>
 </ul>
 </span>
-<h3 onclick="genericWebHookChoosenToggleDisplay()"><span id="generic-webhook-choosen-plus">(+)</span>Generic - WebHook</h3>
+<h3 onclick="genericWebHookChoosenToggleDisplay()"><span id="generic-webhook-choosen-plus">(+)</span> Generic - WebHook</h3>
 <span style="display:none" id="generic-webhook-choosen">
 <p id="suggestedWebhookSignal">Suggested signal will be shown here</p>
 </span>
-<h3 onclick="genericEmailChoosenToggleDisplay()"><span id="generic-email-choosen-plus">(+)</span>Generic - Email</h3>
+<h3 onclick="genericEmailChoosenToggleDisplay()"><span id="generic-email-choosen-plus">(+)</span> Generic - Email</h3>
 <span style="display:none" id="generic-email-choosen">
 <p id="suggestedEmailSignal">Suggested signal will be shown here</p>
 </span>
-<h3 onclick="genericGetChoosenToggleDisplay()"><span id="generic-get-choosen-plus">(+)</span>Debug - GET</h3>
+<h3 onclick="genericGetChoosenToggleDisplay()"><span id="generic-get-choosen-plus">(+)</span> Debug - GET</h3>
 <span style="display:none" id="generic-get-choosen">
 <br>
 Warning: Using GET signals is not recommended because of security concerns. Please use only them when debugging.
