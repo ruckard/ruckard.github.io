@@ -236,12 +236,15 @@ function setSuggestedSignal() {
     + EmailTVGen("buyStopPrice", zigBuyStopPrice)
     + EmailTVGen("positionSize", zigPositionSize)
     + EmailTVGen("positionSizePercentage", zigPositionPercentage)
+/*
+ * Force non hybrid mode for TradingView
     + EmailTVGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
     + EmailTVGen("takeProfit1", zigTakeProfit)
     + EmailTVGen("stopLossPercentage", zigStopLoss)
     + EmailTVGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
     + EmailTVGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
     + EmailTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
+*/
     ;
 
     suggestedTVEmailSignal.innerHTML = tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<br>";
@@ -257,12 +260,15 @@ function setSuggestedSignal() {
     + WebHookTVGen("buyStopPrice", zigBuyStopPrice)
     + WebHookTVGen("positionSize", zigPositionSize)
     + WebHookTVGen("positionSizePercentage", zigPositionPercentage)
+/*
+ * Force non hybrid mode for TradingView
     + WebHookTVGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
     + WebHookTVGen("takeProfit1", zigTakeProfit)
     + WebHookTVGen("stopLossPercentage", zigStopLoss)
     + WebHookTVGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
     + WebHookTVGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
     + WebHookTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
+*/
     ;
 
   suggestedTVWebhookSignal.innerHTML = tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1);
@@ -702,6 +708,38 @@ function zigPairBaseChange() {
   document.getElementById("PAIRBASE4").innerHTML = zigPairBase;
   updateInfo();
 }
+
+function metaChoosenToggleDisplay(choosenMethod) {
+  var currentDisplay = document.getElementById(choosenMethod).style.display;
+  document.getElementById(choosenMethod).style.display = (currentDisplay == "block") ? "none" : "block" ;
+  document.getElementById(choosenMethod + "-plus").innerHTML = (currentDisplay == "block") ? "(+)" : "(-)" ;
+}
+
+function tradingviewWebhookChoosenToggleDisplay() {
+  metaChoosenToggleDisplay("tradingview-webhook-choosen");
+}
+
+function tradingviewEmailChoosenToggleDisplay() {
+  metaChoosenToggleDisplay("tradingview-email-choosen");
+}
+
+function genericWebHookChoosenToggleDisplay() {
+  metaChoosenToggleDisplay("generic-webhook-choosen");
+}
+
+function genericEmailChoosenToggleDisplay() {
+  metaChoosenToggleDisplay("generic-email-choosen");
+}
+
+function genericGetChoosenToggleDisplay() {
+  metaChoosenToggleDisplay("generic-get-choosen");
+}
+
+// function tradingviewWebhookChoosenToggleDisplay() {
+//   var currentDisplay = document.getElementById("tradingview-webhook-choosen").style.display;
+//   document.getElementById("tradingview-webhook-choosen").style.display = (currentDisplay == "block") ? "none" : "block" ;
+//   document.getElementById("tradingview-webhook-choosen-plus").innerHTML = (currentDisplay == "block") ? "(+)" : "(-)" ;
+// }
 
 function addLi(ulField, text) {
   var node = document.createElement("LI");
