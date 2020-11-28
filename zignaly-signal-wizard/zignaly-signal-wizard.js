@@ -14,6 +14,16 @@ function WebHookGen (attribute, value) {
     }
 }
 
+function WebHookTVGen (attribute, value) {
+    var webhooktvgen_return = "";
+    if (value == "") {
+        return ("");
+    } else {
+        webhooktvgen_return = '"' + attribute + '":"' + value + '",';
+        return (webhooktvgen_return);
+    }
+}
+
 function EmailGen (attribute, value) {
     var emailgen_return = "";
     if (value == "") {
@@ -224,9 +234,29 @@ function setSuggestedSignal() {
     ;
 
     suggestedTVEmailSignal.innerHTML = tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<br>";
+  var tmpSuggestedTVWebhookSignal = ""
+    + WebHookTVGen("pair", (zigPairQuote + zigPairBase))
+    + WebHookTVGen("exchange", zigExchange)
+    + WebHookTVGen("exchangeType", zigExchangeType)
+    + WebHookTVGen("side", zigSide)
+    + WebHookTVGen("leverage", zigLeverage)
+    + WebHookTVGen("signalType", zigSignalType)
+    + WebHookTVGen("orderType", zigOrderType)
+    + WebHookTVGen("limitPrice", zigLimitPrice)
+    + WebHookTVGen("buyStopPrice", zigBuyStopPrice)
+    + WebHookTVGen("positionSize", zigPositionSize)
+    + WebHookTVGen("positionSizePercentage", zigPositionPercentage)
+    + WebHookTVGen("takeProfitPercentage1", zigTakeProfitPositionPercentage)
+    + WebHookTVGen("takeProfit1", zigTakeProfit)
+    + WebHookTVGen("stopLossPercentage", zigStopLoss)
+    + WebHookTVGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
+    + WebHookTVGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
+    + WebHookTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
+    ;
+
+    suggestedTVWebhookSignal.innerHTML = tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1);
 
   suggestedGetSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
-  suggestedTVWebhookSignal.innerHTML = zigExchange + zigExchangeType + zigSide + zigLeverage + zigSignalType + zigOrderType + zigLimitPrice + zigBuyStopPrice + zigPositionSize + zigPositionPercentage + zigTakeProfitPositionPercentage + zigTakeProfit + zigStopLoss + zigTrailingPercentageTrigger + zigTrailingPriceTrigger + zigTrailingPercentageDistance;
 
 }
 
