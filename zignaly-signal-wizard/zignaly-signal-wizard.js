@@ -247,7 +247,7 @@ function setSuggestedSignal() {
 */
     ;
 
-    suggestedTVEmailSignal.innerHTML = tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<br>";
+    suggestedTVEmailSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<b>'</b>" + "<br>";
   var tmpSuggestedTVWebhookSignal = ""
     + WebHookTVGen("pair", (zigPairQuote + zigPairBase))
     + WebHookTVGen("exchange", zigExchange)
@@ -271,7 +271,7 @@ function setSuggestedSignal() {
 */
     ;
 
-  suggestedTVWebhookSignal.innerHTML = tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1);
+  suggestedTVWebhookSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1) + "<b>'</b>";
 
   var tmpSuggestedGetSignal = zignalyAPIURL + '?'
     + GetGen("pair", (zigPairQuote + zigPairBase))
