@@ -181,6 +181,7 @@ function setSuggestedSignal() {
   suggestedWebhookSignal.innerHTML = "{"
     + "<br>"
     + WebHookGen("pair", (zigPairQuote + zigPairBase))
+    + WebHookGen("signalId", (zigSide + "-" + zigPairQuote + zigPairBase))
     + WebHookGen("exchange", zigExchange)
     + WebHookGen("exchangeType", zigExchangeType)
     + WebHookGen("side", zigSide)
@@ -204,6 +205,7 @@ function setSuggestedSignal() {
 
   suggestedEmailSignal.innerHTML = ""
     + EmailGen("pair", (zigPairQuote + zigPairBase))
+    + EmailGen("signalId", (zigSide + "-" + zigPairQuote + zigPairBase))
     + EmailGen("exchange", zigExchange)
     + EmailGen("exchangeType", zigExchangeType)
     + EmailGen("side", zigSide)
@@ -226,6 +228,7 @@ function setSuggestedSignal() {
 
   var tmpSuggestedTVEmailSignal = ""
     + EmailTVGen("pair", (zigPairQuote + zigPairBase))
+    + EmailTVGen("signalId", (zigSide + "-" + zigPairQuote + zigPairBase))
     + EmailTVGen("exchange", zigExchange)
     + EmailTVGen("exchangeType", zigExchangeType)
     + EmailTVGen("side", zigSide)
@@ -250,6 +253,7 @@ function setSuggestedSignal() {
     suggestedTVEmailSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<b>'</b>" + "<br>";
   var tmpSuggestedTVWebhookSignal = ""
     + WebHookTVGen("pair", (zigPairQuote + zigPairBase))
+    + WebHookTVGen("signalId", (zigSide + "-" + zigPairQuote + zigPairBase))
     + WebHookTVGen("exchange", zigExchange)
     + WebHookTVGen("exchangeType", zigExchangeType)
     + WebHookTVGen("side", zigSide)
@@ -275,6 +279,7 @@ function setSuggestedSignal() {
 
   var tmpSuggestedGetSignal = zignalyAPIURL + '?'
     + GetGen("pair", (zigPairQuote + zigPairBase))
+    + GetGen("signalId", (zigSide + "-" + zigPairQuote + zigPairBase))
     + GetGen("exchange", zigExchange)
     + GetGen("exchangeType", zigExchangeType)
     + GetGen("side", zigSide)
