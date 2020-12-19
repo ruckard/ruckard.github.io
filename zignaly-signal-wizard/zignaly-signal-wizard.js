@@ -346,9 +346,9 @@ function zigProviderTypeChange() {
   }
   zigExchangeChange(); // Force exchange type change to be taken into account
 
-  var profitSharingSignalTypes = ["entry","exit","stop","start","disableMarket","enableMarket","panicSell", "update", "cancelEntry","reverse"];
-  var copyTraderSignalTypes = ["entry","exit","stop","start","disableMarket","enableMarket","panicSell", "update","cancelEntry","reverse"];
-  var signalProviderSignalTypes = ["entry","exit","reEntry","stop","start","disableMarket","enableMarket","panicSell", "update","cancelEntry","reverse"];
+  var profitSharingSignalTypes = ["entry","exit","stop","start","disableMarket","enableMarket","panicSell", "update", "cancelEntry"];
+  var copyTraderSignalTypes = ["entry","exit","stop","start","disableMarket","enableMarket","panicSell", "update","cancelEntry"];
+  var signalProviderSignalTypes = ["entry","exit","reEntry","stop","start","disableMarket","enableMarket","panicSell", "update","cancelEntry"];
 
   if (zigProviderType === 'profitsharing') {
       usedSignalTypes = profitSharingSignalTypes;
