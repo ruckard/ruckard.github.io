@@ -477,7 +477,7 @@ function zigExchangeChange() {
 
   var zigExchange = document.getElementById("zigExchange").value;
 
-  var zignalyExchangeTypes = ["futures"];
+  var zignalyExchangeTypes = ["futures", "spot"];
   var binanceExchangeTypes = ["spot", "futures"];
   var kucoinExchangeTypes = ["spot", "futures"];
   var bitmexExchangeTypes = ["futures"];
@@ -778,10 +778,8 @@ function updateTips() {
   // Profit Sharing Provider
   if (zigProviderType === 'profitsharing') {
       tip1 = 'Profit Sharing providers can only use Zignaly Exchanges.'
-      tip2 = 'As of November 2020 Profit Sharing providers can only operate in futures.'
 
       addLi(tips, tip1);
-      addLi(tips, tip2);
 
   }
   if (zigProviderType === 'copytrader') {
