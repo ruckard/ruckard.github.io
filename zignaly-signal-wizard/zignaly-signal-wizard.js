@@ -478,8 +478,8 @@ function zigExchangeChange() {
   var zigExchange = document.getElementById("zigExchange").value;
 
   var zignalyExchangeTypes = ["futures", "spot"];
-  var binanceExchangeTypes = ["spot", "futures"];
-  var kucoinExchangeTypes = ["spot", "futures"];
+  var binanceExchangeTypes = ["futures", "spot"];
+  var kucoinExchangeTypes = ["futures", "spot"];
   var bitmexExchangeTypes = ["futures"];
 
   if (zigExchange === 'zignaly') {
