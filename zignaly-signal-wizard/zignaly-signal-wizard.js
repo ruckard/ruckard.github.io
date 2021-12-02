@@ -311,8 +311,8 @@ function zigProviderTypeChange() {
   var zigProviderType = document.getElementById("zigProviderType").value;
 
   var profitSharingExchanges = ["zignaly"];
-  var copyTraderExchanges = ["binance", "kucoin", "zignaly", "bitmex"];
-  var signalProviderExchanges = ["binance", "kucoin", "zignaly", "bitmex"];
+  var copyTraderExchanges = ["binance", "ascendex", "bitmex", "kucoin", "vcce", "zignaly"];
+  var signalProviderExchanges = ["binance", "ascendex", "bitmex", "kucoin", "vcce", "zignaly"];
 
   if (zigProviderType === 'profitsharing') {
       usedExchanges = profitSharingExchanges;
@@ -336,13 +336,19 @@ function zigProviderTypeChange() {
           el.text = "Binance";
       }
       if (el.value === "kucoin") {
-          el.text = "Kucoin";
+          el.text = "KuCoin";
       }
       if (el.value === "zignaly") {
           el.text = "Zignaly";
       }
       if (el.value === "bitmex") {
           el.text = "BitMEX";
+      }
+      if (el.value === "ascendex") {
+          el.text = "AscendEX";
+      }
+      if (el.value === "vcce") {
+          el.text = "VCC EXCHANGE";
       }
 
       zigExchange.add(el);
@@ -479,8 +485,10 @@ function zigExchangeChange() {
 
   var zignalyExchangeTypes = ["futures", "spot"];
   var binanceExchangeTypes = ["futures", "spot"];
-  var kucoinExchangeTypes = ["futures", "spot"];
+  var kucoinExchangeTypes = ["spot"];
   var bitmexExchangeTypes = ["futures"];
+  var ascendexExchangeTypes = ["spot"];
+  var vcceExchangeTypes = ["spot"];
 
   if (zigExchange === 'zignaly') {
       usedExchangeTypes = zignalyExchangeTypes;
@@ -493,6 +501,12 @@ function zigExchangeChange() {
   }
   if (zigExchange === 'bitmex') {
       usedExchangeTypes = bitmexExchangeTypes;
+  }
+  if (zigExchange === 'ascendex') {
+      usedExchangeTypes = ascendexExchangeTypes;
+  }
+  if (zigExchange === 'vcce') {
+      usedExchangeTypes = vcceExchangeTypes;
   }
 
   var zigExchangeType = document.getElementById("zigExchangeType");
