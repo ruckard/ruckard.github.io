@@ -219,37 +219,67 @@ distance.
 <h2>Step 2: Choose way to send signals to Zignaly</h2>
 <h3 onclick="tradingviewWebhookChoosenToggleDisplay()"><span id="tradingview-webhook-choosen-plus">(+)</span> TradingView strategy - WebHook</h3>
 <span style="display:none" id="tradingview-webhook-choosen">
-You need to set the alert_message attribute from either
+<p>
+Option A) If you want <b>TradingView to handle entries and exits on its own</b> (Zignaly it's only an intermediate tool) you need to set the alert_message attribute from either
 <ul>
 <li>strategy.entry</li>
 <li>strategy.exit</li>
 </ul>
 like this:
+</p>
 <p id="suggestedTVWebhookSignal">Suggested signal will be shown here</p>
 .
 
-The associated alert needs to be setup in this way:
+
+<p>
+Option B) If you want <b>both Zignaly and TradingView to handle entries and exits</b> you need to set the alert_message attribute from either
+<ul>
+<li>strategy.entry</li>
+<li>strategy.exit</li>
+</ul>
+like this:
+</p>
+<p id="suggestedHybridTVWebhookSignal">Suggested signal will be shown here</p>
+.
+<p>
+For both options) The associated alert needs to be setup in this way:
 <ul>
 <li><b>Webhook URL</b>: https://zignaly.com/api/signals.php?key=MYSECRETKEY</li>
 <li><b>Message</b>: { {{strategy.order.alert_message}} , "key" : "MYSECRETKEY" }</li>
 </ul>
+</p>
 </span>
 <h3 onclick="tradingviewEmailChoosenToggleDisplay()"><span id="tradingview-email-choosen-plus">(+)</span> TradingView strategy - Email</h3>
 <span style="display:none" id="tradingview-email-choosen">
-You need to set the alert_message attribute from either
+<p>
+Option A) If you want <b>TradingView to handle entries and exits on its own</b> (Zignaly it's only an intermediate tool) you need to set the alert_message attribute from either
 <ul>
 <li>strategy.entry</li>
 <li>strategy.exit</li>
 </ul>
 like this:
+</p>
 <p id="suggestedTVEmailSignal">Suggested signal will be shown here</p>
 .
-The associated alert needs to be setup in this way:
+
+<p>
+Option B) If you want <b>both Zignaly and TradingView to handle entries and exits</b> you need to set the alert_message attribute from either
+<ul>
+<li>strategy.entry</li>
+<li>strategy.exit</li>
+</ul>
+like this:
+</p>
+<p id="suggestedHybridTVEmailSignal">Suggested signal will be shown here</p>
+.
+<p>
+For both options) The associated alert needs to be setup in this way:
 <ul>
 <li>In 'More Actions' check: Send Email-to-SMS</li>
 <li><b>Message</b>: ||{{strategy.order.alert_message}}||key=MYSECRETKEY||
 MYZIGNALYREDIRECTTRIGGER</li>
 </ul>
+</p>
 
 Suggested workflow for setting up Email from TradingView:
 <ul>

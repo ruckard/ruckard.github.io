@@ -239,18 +239,20 @@ function setSuggestedSignal() {
     + EmailTVGen("buyStopPrice", zigBuyStopPrice)
     + EmailTVGen("positionSize", zigPositionSize)
     + EmailTVGen("positionSizePercentage", zigPositionPercentage)
-/*
- * Force non hybrid mode for TradingView
+    ;
+
+  var tmpSuggestedHybridTVEmailSignal = tmpSuggestedTVEmailSignal
     + EmailTVGen("takeProfitAmountPercentage1", zigTakeProfitPositionPercentage)
     + EmailTVGen("takeProfitPercentage1", zigTakeProfit)
     + EmailTVGen("stopLossPercentage", zigStopLoss)
     + EmailTVGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
     + EmailTVGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
     + EmailTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
-*/
     ;
 
     suggestedTVEmailSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedTVEmailSignal.substring(0, tmpSuggestedTVEmailSignal.length - 2) + "<b>'</b>" + "<br>";
+    suggestedHybridTVEmailSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedHybridTVEmailSignal.substring(0, tmpSuggestedHybridTVEmailSignal.length - 2) + "<b>'</b>" + "<br>";
+
   var tmpSuggestedTVWebhookSignal = ""
     + WebHookTVGen("pair", (zigPairQuote + zigPairBase))
     + WebHookTVGen("signalId", (zigSide + "-" + zigPairQuote + zigPairBase))
@@ -264,18 +266,19 @@ function setSuggestedSignal() {
     + WebHookTVGen("buyStopPrice", zigBuyStopPrice)
     + WebHookTVGen("positionSize", zigPositionSize)
     + WebHookTVGen("positionSizePercentage", zigPositionPercentage)
-/*
- * Force non hybrid mode for TradingView
+    ;
+
+  var tmpSuggestedHybridTVWebhookSignal = tmpSuggestedTVWebhookSignal
     + WebHookTVGen("takeProfitAmountPercentage1", zigTakeProfitPositionPercentage)
     + WebHookTVGen("takeProfitPercentage1", zigTakeProfit)
     + WebHookTVGen("stopLossPercentage", zigStopLoss)
     + WebHookTVGen("trailingStopTriggerPercentage", zigTrailingPercentageTrigger)
     + WebHookTVGen("trailingStopTriggerPrice", zigTrailingPriceTrigger)
     + WebHookTVGen("trailingStopDistancePercentage", zigTrailingPercentageDistance)
-*/
     ;
 
   suggestedTVWebhookSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedTVWebhookSignal.substring(0, tmpSuggestedTVWebhookSignal.length - 1) + "<b>'</b>";
+  suggestedHybridTVWebhookSignal.innerHTML = "<b>alert_message=" + "'</b>" + tmpSuggestedHybridTVWebhookSignal.substring(0, tmpSuggestedHybridTVWebhookSignal.length - 1) + "<b>'</b>";
 
   var tmpSuggestedGetSignal = zignalyAPIURL + '?'
     + GetGen("pair", (zigPairQuote + zigPairBase))
