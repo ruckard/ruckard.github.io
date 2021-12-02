@@ -58,6 +58,26 @@ So here there is a nice Zignaly Signal Wizard for you.
 <li>Some arrangement of fields despite of being forbidden here in the wizard might work when testing them on Zignaly.</li>
 </ul>
 </span>
+<h2>Zignaly does not replicate your Binance orders</h2>
+If you are looking for a tool that replicates your Binance orders to several followers (without you having to do anything else other than interacting with Binance) this is not your tool.
+In order for your followers to be able to copy your orders those <b>orders need to be created and closed from Zignaly itself</b>.
+You can interact with Zignaly either with the Trading Terminal (Web based) or with signals usually triggered from TradingView (this is what this wizard is about).
+<p>
+<b>This is how it works</b>:
+<pre>
+Trading Terminal -> Signal -> Zignaly -> (Followers and Provider) Exchange Accounts
+TradingView Script -> Signal -> Zignaly -> (Followers and Provider) Exchange Accounts
+</pre>
+</p>
+<b>This is how it does NOT work</b>:
+<p>
+Zignaly reads your exchange account orders continously so that:
+<pre>
+Provider Exchange Account -> Followers Exchange Accounts
+</pre>
+</p>
+
+<a name="prerequisites">
 <h2>Pre-requisites</h2>
 
 <b>WARNING:</b> If these pre-requisites are not met your signal will be discarded and you won't know why.
@@ -74,6 +94,8 @@ So here there is a nice Zignaly Signal Wizard for you.
 <li><b>You have to follow your own service in Zignaly and allocate to it some of your funds.</b></li>
 <li><b>Make your order amount meet the minimal amount required by the Exchange (E.g. Minimum: 0.001 BTC or USDT equivalent for Bitcoin).</b>
 If you allocate 100 USDT and you open a Bitcoin position based on 20% of your allocation it will try open a position with 20 USDT. This is not going to work because with current price (1 BTC = 56,955.08 USDT) that means 0.00035136 BTC and that it's way less than the current Binance minimum: 0.001 BTC = 56.91 USDT. You can try to avoid this problem by using LTC instead, using futures and leverage (if you know what you are doing) or increasing your allocated funds.</li>
+<li>I highly encourage you to test the Trading Terminal (making sure you choose your own service and not 'Manual Trading') to feel how Zignaly works. You will learn how it replicates into Binance (In CopyTrading/SignalProvider).</li>
+<li>Even if you are going to create a 'Profit Sharing' service I highly encourage you to create a private Copy Trading service initially as a personal test. That way you can check how Zignaly interacts with Binance (How orders are created, closed and so on). And, again, use the Trading Terminal.</li>
 </ul>
 
 <h2>Step 1: Choose your options</h2>
@@ -341,7 +363,21 @@ in your Internet Browser.
 <ul id="tips"></ul>
 <h2>Step 4: Where to find your MYSECRETKEY</h2>
 Once you have created a copy-trader or a signal-provider, just to go to your provider edit tab and you will find your service key there under "Signal URL". It's important that you don't share this key with anybody because it controls your service (sending buy/sell orders to the exchange).
-<h2>Step 5: Beyond the wizard</h2>
+
+<h2>Step 5: Just before firing the signal</h2>
+
+<ul>
+<li>Check again if you meet the <a href="#prerequisites">pre-requisites</a>.</li>
+<li>In Zignaly webpage select the Exchange that follows your own service. Check your Dashboard. Positions. Open. If everything goes ok your position will appear there.</li>
+<li>In Zignaly webpage select the Exchange that follows your own service. Check your Dashboard. Positions. Error Log. If something went wrong you will find why there. Be aware that sometimes the error is so big (Wrong key or syntax) that Zignaly is not going to show it to you.</li>
+<li>Join the discord, check the bug-report channel and ask there if signals are working properly or if they are having an extraordinary delay. This is going to be fixed soon but sometimes there is a 15 minutes delay because of their queue implementation. It's better to know if such a problem is happening before trying to send a signal for the first time. Otherwise you will think you have failed trying to send your signal while you have not and it opens later.</li>
+</ul>
+
+<h2>Step 6: Fire the signal</h2>
+
+Now you should be ready to fire your first signal.
+
+<h2>Beyond the wizard</h2>
 <ul>
 <li><a href="https://github.com/ruckard/trading" target="_blank">Ruckard Smith Trading notes</a></li>
 <li><a href="https://www.tradingview.com/script/YF0KJH7V-Zignaly-Tutorial/" target="_blank">Zignaly tutorial TradingView strategy</a></li>
