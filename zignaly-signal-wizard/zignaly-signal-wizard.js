@@ -1012,6 +1012,16 @@ function updateTips() {
 
       addLi(tips, tip1);
   }
+  if (((zigProviderType === 'copytrader') || (zigProviderType === 'signalprovider')) && (zigExchange === 'binance')) {
+      tip1 = 'If you create a service for binance both users with binance or zignaly exchanges will be able to follow it.';
+
+      addLi(tips, tip1);
+  }
+  if (((zigProviderType === 'copytrader') || (zigProviderType === 'signalprovider')) && (zigExchange === 'zignaly')) {
+      tip1 = 'If you create a service for zignaly both users with binance or zignaly exchanges will be able to follow it.';
+
+      addLi(tips, tip1);
+  }
 }
 
 function updateInfo() {
