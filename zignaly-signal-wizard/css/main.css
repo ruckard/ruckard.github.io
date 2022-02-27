@@ -1,0 +1,5 @@
+/* We use mark in section titles to enforce a purple background */
+mark {
+    background-color: #770fc8;
+    color: white;
+    }
